@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Screenshots/Icon.png" width="128" title="COVID-19 Desktop App" alt="COVID-19 app">
+  <img src="Screenshots/Icon.png" width="256" title="COVID-19 Desktop App" alt="COVID-19 app">
 </p>
 
 <h1 align="center">COVID-19 Desktop Application</h1>
@@ -9,19 +9,19 @@ As soon I saw someone posted web application for this covid-19, I search/researc
 
 ## Interface
 <p align="center">
-  <img src="Screenshots/Interface-Overview.PNG" width="350" title="COVID-19 Desktop App" alt="COVID-19 Overview">
+  <img src="Screenshots/Interface-Overview.PNG" title="COVID-19 Desktop App" alt="COVID-19 Overview">
 </p>
 <p align="center">
-  <img src="Screenshots/Interface-Reports.PNG" width="350" title="COVID-19 Desktop App" alt="COVID-19 Reports">
+  <img src="Screenshots/Interface-Reports.PNG" title="COVID-19 Desktop App" alt="COVID-19 Reports">
 </p>
 <p align="center">
-  <img src="Screenshots/Interface-Symptoms.PNG" width="350" title="COVID-19 Desktop App" alt="COVID-19 Symptoms">
+  <img src="Screenshots/Interface-Symptoms.PNG" title="COVID-19 Desktop App" alt="COVID-19 Symptoms">
 </p>
 <p align="center">
-  <img src="Screenshots/Interface-Test.PNG" width="350" title="COVID-19 Desktop App" alt="COVID-19 Test">
+  <img src="Screenshots/Interface-Test.PNG" title="COVID-19 Desktop App" alt="COVID-19 Test">
 </p>
 <p align="center">
-  <img src="Screenshots/Interface-Test-Score.PNG.PNG" width="350" title="COVID-19 Desktop App" alt="COVID-19 Test Score">
+  <img src="Screenshots/Interface-Test-Score.PNG" title="COVID-19 Desktop App" alt="COVID-19 Test Score">
 </p>
 
 ## Features
@@ -42,18 +42,11 @@ I have always wanted to keep the app simple to make sure it loads faster but sti
 * [Bunifu Framework](https://bunifuframework.com/) - The .net framework used
 * [Newtonsoft.Json](https://www.newtonsoft.com/json) - Used to deserialize json format
 * [API Used](https://github.com/mathdroid/covid-19-api) - Used to get data about covid-19
-* [API Used](https://github.com/NovelCOVID/API) - Used to get data about covid-19
+* [Another API Used](https://github.com/NovelCOVID/API) - Another API used to get data about covid-19
 
 ## Color used
- - ![#C1C2C9](https://placehold.it/15/f03c15/000000?text=+) `#C1C2C9`
- - ![#190F52](https://placehold.it/15/f03c15/000000?text=+) `#190F52`
- - ![#F8FBFF](https://placehold.it/15/f03c15/000000?text=+) `#F8FBFF`
- - ![#817C9B](https://placehold.it/15/f03c15/000000?text=+) `#817C9B`
- - ![#FA6400](https://placehold.it/15/f03c15/000000?text=+) `#FA6400`
- - ![#1CB142](https://placehold.it/15/f03c15/000000?text=+) `#1CB142`
- - ![#F9345E](https://placehold.it/15/f03c15/000000?text=+) `#F9345E`
- - ![#6236FF](https://placehold.it/15/f03c15/000000?text=+) `#6236FF`
- 
+ - ![Color palette](Screenshots/Interface-Color1.PNG)
+ - ![Color palette](Screenshots/Interface-Color2.PNG)
 
 ## Acknowledgments
 * Hat tip to anyone whose code was used
