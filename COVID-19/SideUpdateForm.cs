@@ -24,28 +24,42 @@ namespace COVID_19
 
         private async Task GetDataAsync(string _url)
         {
-            string response = string.Empty;
-
-            GETHandler apiHandler = new GETHandler();
-
-            DeserializeJSON deserializeJson = new DeserializeJSON();
-
-            apiHandler.endPoint = string.Format(_url);
-            response = apiHandler.GETRequest();
-
-            var covidtogrid = deserializeJson.getDataToGrid(response);
-
-            foreach(var item in covidtogrid)
+            try
             {
-                bunifuDataGridView1.Rows.Add(Classes.OpenURL.GetImageFromUrl(item.Rest.Item2), item.Item1,
-                    item.Item2, item.Item3, item.Item4, item.Item5, item.Item6,
-                    item.Item7, item.Rest.Item1);
-            }
+                string response = string.Empty;
 
-            await Task.CompletedTask;
+                DeserializeJSON deserializeJson = new DeserializeJSON();
+
+                if (Properties.Settings.Default.isInternet)
+                {
+                    GETHandler apiHandler = new GETHandler();
+
+                    apiHandler.endPoint = string.Format(_url);
+                    response = apiHandler.GETRequest();
+                }
+                else
+                {
+                    response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson\countries.json";
+                }
+
+                var covidtogrid = deserializeJson.getDataToGrid(response);
+
+                foreach (var item in covidtogrid)
+                {
+                    bunifuDataGridView1.Rows.Add(Classes.OpenURL.GetImageFromUrl(item.Rest.Item2), item.Item1,
+                        item.Item2, item.Item3, item.Item4, item.Item5, item.Item6,
+                        item.Item7, item.Rest.Item1);
+                }
+
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+            }
         }
 
-        
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

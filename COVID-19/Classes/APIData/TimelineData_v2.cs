@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace COVID_19.Classes.APIData
 {
     class TimelineData_v2
     {
-        /* ANOTHER API FROM https://corona.lmao.ninja/all */
+        /* ANOTHER API FROM https://covid19.mathdro.id/api/daily */
         public Int64 totalConfirmed { get; set; }
         public Int64 mainlandChina { get; set; }
         public Int64 otherLocations { get; set; }

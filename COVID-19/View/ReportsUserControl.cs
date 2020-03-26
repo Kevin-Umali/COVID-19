@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using COVID_19.API;
+using COVID_19.Classes;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using COVID_19.API;
-using COVID_19.Classes;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace COVID_19.View
@@ -23,36 +17,54 @@ namespace COVID_19.View
             InitializeComponent();
         }
 
-        
+
 
         private async void ReportsUserControl_Load(object sender, EventArgs e)
         {
-            await getAllCountryName();
-            await getHistoricalTimeLine();
+            try
+            {
+                await getAllCountryName();
+                await getHistoricalTimeLine();
+            }
+            catch (Exception ex)
+            {
+                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+            }
         }
 
         private async Task getHistoricalTimeLine()
         {
-
-            string response = string.Empty;
-
-            GETHandler apiHandler = new GETHandler();
-
-            DeserializeJSON deserializeJson = new DeserializeJSON();
-
-            apiHandler.endPoint = string.Format("https://covid19.mathdro.id/api/daily");
-            response = apiHandler.GETRequest();
-
-            //Getting data from json.
-            var timelinedata = deserializeJson.getHistoricalTimeline(response);
-
-           
-            foreach (var item in timelinedata)
+            try
             {
-                CreateStatsGraph(item.Item1, item.Item2, item.Item3);
-            }
+                string response = string.Empty;
 
-            await Task.CompletedTask;
+                DeserializeJSON deserializeJson = new DeserializeJSON();
+                if (Properties.Settings.Default.isInternet)
+                {
+                    GETHandler apiHandler = new GETHandler();
+
+                    apiHandler.endPoint = string.Format("https://covid19.mathdro.id/api/daily");
+                    response = apiHandler.GETRequest();
+                }
+                else
+                {
+                    response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson\daily.json";
+                }
+                //Getting data from json.
+                var timelinedata = deserializeJson.getHistoricalTimeline(response);
+
+
+                foreach (var item in timelinedata)
+                {
+                    CreateStatsGraph(item.Item1, item.Item2, item.Item3);
+                }
+
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+            }
         }
 
         private async void CreateStatsGraph(string _date, long cases, long death)
@@ -100,54 +112,75 @@ namespace COVID_19.View
         }
         private async Task getCountryData(string _countryname)
         {
-            string response = string.Empty;
+            try
+            {
+                string response = string.Empty;
+                DeserializeJSON deserializeJson = new DeserializeJSON();
+                if (Properties.Settings.Default.isInternet)
+                {
+                    GETHandler apiHandler = new GETHandler();
 
-            GETHandler apiHandler = new GETHandler();
+                    apiHandler.endPoint = string.Format(
+                        string.Format("https://corona.lmao.ninja/countries/{0}", _countryname));
+                    response = apiHandler.GETRequest();
+                }
+                else
+                {
+                    response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
+                        + string.Format(@"\APIJson\{0}.json", _countryname);
+                }
+                //Getting data from json.
+                var countrydata = deserializeJson.getSpecificCountryData(response);
 
-            DeserializeJSON deserializeJson = new DeserializeJSON();
+                //cases, todayCases, deaths, todayDeaths, recovered, active, critical, flag, iso2, iso3
+                lblcases.Text = string.Format("{0:n0}", countrydata.Item1);
+                lbltodaycases.Text = string.Format("{0:n0}", countrydata.Item2);
+                lbldeath.Text = string.Format("{0:n0}", countrydata.Item3);
+                lbltodaydeath.Text = string.Format("{0:n0}", countrydata.Item4);
+                lblrecovered.Text = string.Format("{0:n0}", countrydata.Item5);
+                lblactive.Text = string.Format("{0:n0}", countrydata.Item6);
+                lblcritical.Text = string.Format("{0:n0}", countrydata.Item7);
 
-            apiHandler.endPoint = string.Format(
-                string.Format("https://corona.lmao.ninja/countries/{0}", _countryname));
-            response = apiHandler.GETRequest();
+                _cases = countrydata.Item1;
+                _recovered = countrydata.Item5;
+                _death = countrydata.Item3;
 
-            //Getting data from json.
-            var countrydata = deserializeJson.getSpecificCountryData(response);
+                if (Properties.Settings.Default.isInternet)
+                {
+                    pictureBox1.LoadAsync(countrydata.Item8);
+                }
+                lbliso2.Text = countrydata.Item9;
+                lbliso3.Text = countrydata.Item10;
 
-            //cases, todayCases, deaths, todayDeaths, recovered, active, critical, flag, iso2, iso3
-            lblcases.Text = string.Format("{0:n0}", countrydata.Item1);
-            lbltodaycases.Text = string.Format("{0:n0}", countrydata.Item2);
-            lbldeath.Text = string.Format("{0:n0}", countrydata.Item3);
-            lbltodaydeath.Text = string.Format("{0:n0}", countrydata.Item4);
-            lblrecovered.Text = string.Format("{0:n0}", countrydata.Item5);
-            lblactive.Text = string.Format("{0:n0}", countrydata.Item6);
-            lblcritical.Text = string.Format("{0:n0}", countrydata.Item7);
-
-            _cases = countrydata.Item1;
-            _recovered = countrydata.Item5;
-            _death = countrydata.Item3;
-
-            pictureBox1.LoadAsync(countrydata.Item8);
-            lbliso2.Text = countrydata.Item9;
-            lbliso3.Text = countrydata.Item10;
-
-            await Task.CompletedTask;
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+            }
         }
 
         private async Task getAllCountryName()
         {
             string response = string.Empty;
 
-            GETHandler apiHandler = new GETHandler();
-
             DeserializeJSON deserializeJson = new DeserializeJSON();
+            if (Properties.Settings.Default.isInternet)
+            {
+                GETHandler apiHandler = new GETHandler();
 
-            apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
-            response = apiHandler.GETRequest();
-
+                apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
+                response = apiHandler.GETRequest();
+            }
+            else
+            {
+                response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson\countries.json";
+            }
             //Getting data from json.
             var countrynamedata = deserializeJson.getAllCountryName(response);
 
-            foreach(var item in countrynamedata)
+
+            foreach (var item in countrynamedata)
             {
                 comboBox1.Items.Add(string.Format("{0}", item.ToString()));
             }

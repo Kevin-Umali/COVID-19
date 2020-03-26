@@ -1,11 +1,9 @@
-﻿using System;
+﻿using COVID_19.API;
+using COVID_19.Classes;
+using COVID_19.View.Card;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using COVID_19.API;
-using COVID_19.Classes;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using COVID_19.View.Card;
 
 namespace COVID_19.View
 {
@@ -19,43 +17,61 @@ namespace COVID_19.View
 
         private async void OverviewUserControl_Load(object sender, EventArgs e)
         {
-            await getCovidDataAsync();
+            try
+            {
+                await getCovidDataAsync();
 
-            lblaffected1.Text = string.Format(Classes.CalculateRatio.FormatNumber(_totalcases) + " {0}", "Affected");
-            lblaffected2.Text = string.Format(Classes.CalculateRatio.FormatNumber(_totalcases) + " {0}", "Affected");
-            lblrecovered1.Text = string.Format(Classes.CalculateRatio.FormatNumber(_recovered) + " {0}", "Recovered");
-            lbldeath1.Text = string.Format(Classes.CalculateRatio.FormatNumber(_death) + " {0}", "Death");
+                lblaffected1.Text = string.Format(Classes.CalculateRatio.FormatNumber(_totalcases) + " {0}", "Affected");
+                lblaffected2.Text = string.Format(Classes.CalculateRatio.FormatNumber(_totalcases) + " {0}", "Affected");
+                lblrecovered1.Text = string.Format(Classes.CalculateRatio.FormatNumber(_recovered) + " {0}", "Recovered");
+                lbldeath1.Text = string.Format(Classes.CalculateRatio.FormatNumber(_death) + " {0}", "Death");
 
-            pictureBox3.LoadAsync("https://www.cdc.gov/coronavirus/2019-ncov/images/outbreak-coronavirus-world.png");
+                pictureBox3.LoadAsync("https://www.cdc.gov/coronavirus/2019-ncov/images/outbreak-coronavirus-world.png");
 
-            await ComputeRatioOfRecoveryAndDeathAsync();
-            await getCountriesDataAsync();
+                await ComputeRatioOfRecoveryAndDeathAsync();
+                await getCountriesDataAsync();
+            }
+            catch (Exception ex)
+            {
+                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+            }
         }
 
         private async Task getCovidDataAsync()
         {
-            string response = string.Empty;
+            try
+            {
+                string response = string.Empty;
 
-            GETHandler apiHandler = new GETHandler();
+                DeserializeJSON deserializeJson = new DeserializeJSON();
+                if (Properties.Settings.Default.isInternet)
+                {
+                    GETHandler apiHandler = new GETHandler();
+                    apiHandler.endPoint = string.Format("https://corona.lmao.ninja/all");
+                    response = apiHandler.GETRequest();
+                }
+                else
+                {
+                    response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson\all.json";
+                }
+                //Getting data from json.
+                var coviddata = deserializeJson.getDailyData(response);
+                //putting the data to the label and long
+                lbltotalcases.Text = string.Format("{0:n0}", coviddata.Item1);
+                lbldeath.Text = string.Format("{0:n0}", coviddata.Item2);
+                lblrecovered.Text = string.Format("{0:n0}", coviddata.Item3);
+                lblupdated.Text = coviddata.Item4;
 
-            DeserializeJSON deserializeJson = new DeserializeJSON();
+                _totalcases = coviddata.Item1;
+                _death = coviddata.Item2;
+                _recovered = coviddata.Item3;
 
-            apiHandler.endPoint = string.Format("https://corona.lmao.ninja/all");
-            response = apiHandler.GETRequest();
-
-            //Getting data from json.
-            var coviddata = deserializeJson.getDailyData(response);
-            //putting the data to the label and long
-            lbltotalcases.Text = string.Format("{0:n0}", coviddata.Item1);
-            lbldeath.Text = string.Format("{0:n0}", coviddata.Item2);
-            lblrecovered.Text = string.Format("{0:n0}", coviddata.Item3);
-            lblupdated.Text = coviddata.Item4;
-
-            _totalcases = coviddata.Item1;
-            _death = coviddata.Item2;
-            _recovered = coviddata.Item3;
-
-            await Task.CompletedTask;
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+            }
         }
 
         private async Task ComputeRatioOfRecoveryAndDeathAsync()
@@ -98,33 +114,46 @@ namespace COVID_19.View
 
         private async Task getCountriesDataAsync()
         {
-            string response = string.Empty;
-
-            GETHandler apiHandler = new GETHandler();
-
-            DeserializeJSON deserializeJson = new DeserializeJSON();
-
-            apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
-            response = apiHandler.GETRequest();
-
-            DisposeUserControl(flowLayoutPanel1);
-            DisposeUserControl(flowLayoutPanel2);
-
-            //Getting data from json.
-            var countriesdata = deserializeJson.getCountriesData(response);
-            ////putting the data to the label and long
-            var newcountriesdata = countriesdata.GetRange(0, 3);
-            foreach(var item in countriesdata)
+            try
             {
-                AddCountryCard(item.Item1, item.Item2, item.Item4);
-            }
+                string response = string.Empty;
 
-            foreach (var item in newcountriesdata)
+                DeserializeJSON deserializeJson = new DeserializeJSON();
+
+                if (Properties.Settings.Default.isInternet)
+                {
+                    GETHandler apiHandler = new GETHandler();
+                    apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
+                    response = apiHandler.GETRequest();
+                }
+                else
+                {
+                    response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson\countries.json";
+                }
+
+                DisposeUserControl(flowLayoutPanel1);
+                DisposeUserControl(flowLayoutPanel2);
+
+                //Getting data from json.
+                var countriesdata = deserializeJson.getCountriesData(response);
+                ////putting the data to the label and long
+                var newcountriesdata = countriesdata.GetRange(0, 3);
+                foreach (var item in countriesdata)
+                {
+                    AddCountryCard(item.Item1, item.Item2, item.Item4);
+                }
+
+                foreach (var item in newcountriesdata)
+                {
+                    AddTopCountryCard(item.Item1, _totalcases, item.Item2, item.Item3);
+                }
+
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
             {
-                AddTopCountryCard(item.Item1, _totalcases, item.Item2, item.Item3);
+                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
             }
-
-            await Task.CompletedTask;
         }
 
         public async void AddTopCountryCard(string countryname, Int64 totalcases, Int64 affected, Int64 recovered)

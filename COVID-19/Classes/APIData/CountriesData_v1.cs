@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace COVID_19.Classes.APIData
 {
@@ -27,7 +23,7 @@ namespace COVID_19.Classes.APIData
             public string iso3 { get; set; }
             public string _id { get; set; }
             public Int64 lat { get; set; }
-            [JsonProperty("long")] 
+            [JsonProperty("long")]
             public Int64 _long { get; set; }
             public string flag { get; set; }
 

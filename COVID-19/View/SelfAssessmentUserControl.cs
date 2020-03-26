@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COVID_19.View
@@ -26,7 +20,7 @@ namespace COVID_19.View
 
         private void TitleAndDescription()
         {
-            if(_score.Equals("911-1"))
+            if (_score.Equals("911-1"))
             {
                 bunifuButton1.Visible = true;
                 lbltitle.ForeColor = Color.FromArgb(249, 52, 94);
@@ -41,7 +35,7 @@ namespace COVID_19.View
                 bunifuButton1.Visible = true;
                 lbltitle.ForeColor = Color.FromArgb(249, 52, 94);
                 lbltitle.Text = "Please go directly to your nearest emergency department. If your symptoms worsen, call 911. (your country emergency telephone number).";
-                lbldescription.Text = "In many countries, dialing either 1-1-2 (used in Europe and parts of Asia) or 9-1-1 (used in the Americas) will connect callers to the local emergency services."+ Environment.NewLine + Environment.NewLine +
+                lbldescription.Text = "In many countries, dialing either 1-1-2 (used in Europe and parts of Asia) or 9-1-1 (used in the Americas) will connect callers to the local emergency services." + Environment.NewLine + Environment.NewLine +
                    "Some countries use other emergency telephone numbers, sometimes also depending on the emergency service.";
                 return;
             }

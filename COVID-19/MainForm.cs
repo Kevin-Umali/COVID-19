@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
 namespace COVID_19
@@ -16,16 +12,44 @@ namespace COVID_19
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            if (Ping("https://corona.lmao.ninja/all"))
+            DialogResult result = CustomizeDialog.CovidMsgBox.Show("Do you want to save COVID-19 Data for offline use?", "Question");
+
+            if (result == DialogResult.Yes)
             {
-                DisposeUserControl(new View.OverviewUserControl());
+                new CustomizeDialog.DownloadDialog().ShowDialog();
+            }
+            else if (result == DialogResult.No)
+            {
+
+                DialogResult result1 = CustomizeDialog.CovidMsgBox.Show("Do you want to Load Updated COVID-19 Data from WebAPI? (Internet Required)", "Question");
+                if (result1 == DialogResult.Yes)
+                {
+                    Properties.Settings.Default.isInternet = true;
+                    Properties.Settings.Default.Save();
+                }
+                else if (result1 == DialogResult.No)
+                {
+                    Properties.Settings.Default.isInternet = false;
+                    Properties.Settings.Default.Save();
+                }
+            }
+
+            if (Properties.Settings.Default.isInternet)
+            {
+                if (Classes.OpenURL.Ping("https://corona.lmao.ninja/all"))
+                {
+                    DisposeUserControl(new View.OverviewUserControl());
+                }
+                else
+                {
+                    pictureBox2.BringToFront();
+                }
             }
             else
             {
-                pictureBox2.BringToFront();
+                DisposeUserControl(new View.OverviewUserControl());
             }
         }
-
         void DisposeUserControl(UserControl uc)
         {
             foreach (Control d in mainpanel.Controls)
@@ -35,7 +59,7 @@ namespace COVID_19
                 d.Dispose();
                 GC.Collect();
             }
-            
+
             uc.Dock = DockStyle.Fill;
             mainpanel.Controls.Add(uc);
         }
@@ -44,9 +68,9 @@ namespace COVID_19
         {
             Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton = (Bunifu.UI.WinForms.BunifuButton.BunifuButton)sender;
 
-            if(bunifuButton.ButtonText.Equals("Overview"))
+            if (bunifuButton.ButtonText.Equals("Overview"))
             {
-                if (Ping("https://corona.lmao.ninja/all"))
+                if (Classes.OpenURL.Ping("https://corona.lmao.ninja/all"))
                 {
                     DisposeUserControl(new View.OverviewUserControl());
                 }
@@ -62,7 +86,7 @@ namespace COVID_19
             }
             else if (bunifuButton.ButtonText.Equals("Reports"))
             {
-                if (Ping("https://corona.lmao.ninja/countries/Philippines"))
+                if (Classes.OpenURL.Ping("https://corona.lmao.ninja/countries/Philippines"))
                 {
                     DisposeUserControl(new View.ReportsUserControl());
                 }
@@ -87,29 +111,16 @@ namespace COVID_19
             DisposeUserControl(new View.SelfAssessmentUserControl(_score));
         }
 
-        private bool Ping(string url)
-        {
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-                request.Timeout = 3000;
-                request.AllowAutoRedirect = false; // find out if this site is up and don't follow a redirector
-                request.Method = "HEAD";
 
-                using (var response = request.GetResponse())
-                {
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             new PopupEffect.transparentBg(this, new frmAbout());
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

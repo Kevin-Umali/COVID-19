@@ -12,6 +12,27 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\COVID-19 Application\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>COVID-19 Tracker System</ProductName>
+    <PublisherName>John Kevin Umali</PublisherName>
+    <SuiteName>COVID-19 Tracker System</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +52,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CB8073E25AA09C8CC0A22DEEDAE0BCE265936D91</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>COVID-19_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>output-onlinepngtools%284%29%281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.UI.WinForm.BunifuShadowPanel">
@@ -99,6 +135,7 @@
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\Downloads\Bunifu-UI-WinForms-1.11.5.1_ShareAppsCrack.com\Bunifu UI WinForms 1.11.5.1\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -110,6 +147,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -140,6 +179,18 @@
       <DependentUpon>AssessmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\OpenURL.cs" />
+    <Compile Include="CustomizeDialog\CovidMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomizeDialog\CovidMsgBox.Designer.cs">
+      <DependentUpon>CovidMsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeDialog\DownloadDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomizeDialog\DownloadDialog.Designer.cs">
+      <DependentUpon>DownloadDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +256,12 @@
     <EmbeddedResource Include="AssessmentForm.resx">
       <DependentUpon>AssessmentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomizeDialog\CovidMsgBox.resx">
+      <DependentUpon>CovidMsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomizeDialog\DownloadDialog.resx">
+      <DependentUpon>DownloadDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +301,209 @@
     <EmbeddedResource Include="View\SymptomsUserControl.resx">
       <DependentUpon>SymptomsUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\APIJson\Afghanistan.json" />
+    <None Include="bin\Debug\APIJson\Albania.json" />
+    <None Include="bin\Debug\APIJson\Algeria.json" />
+    <None Include="bin\Debug\APIJson\all.json" />
+    <None Include="bin\Debug\APIJson\Andorra.json" />
+    <None Include="bin\Debug\APIJson\Angola.json" />
+    <None Include="bin\Debug\APIJson\Antigua and Barbuda.json" />
+    <None Include="bin\Debug\APIJson\Argentina.json" />
+    <None Include="bin\Debug\APIJson\Armenia.json" />
+    <None Include="bin\Debug\APIJson\Aruba.json" />
+    <None Include="bin\Debug\APIJson\Australia.json" />
+    <None Include="bin\Debug\APIJson\Austria.json" />
+    <None Include="bin\Debug\APIJson\Azerbaijan.json" />
+    <None Include="bin\Debug\APIJson\Bahamas.json" />
+    <None Include="bin\Debug\APIJson\Bahrain.json" />
+    <None Include="bin\Debug\APIJson\Bangladesh.json" />
+    <None Include="bin\Debug\APIJson\Barbados.json" />
+    <None Include="bin\Debug\APIJson\Belarus.json" />
+    <None Include="bin\Debug\APIJson\Belgium.json" />
+    <None Include="bin\Debug\APIJson\Belize.json" />
+    <None Include="bin\Debug\APIJson\Benin.json" />
+    <None Include="bin\Debug\APIJson\Bermuda.json" />
+    <None Include="bin\Debug\APIJson\Bhutan.json" />
+    <None Include="bin\Debug\APIJson\Bolivia.json" />
+    <None Include="bin\Debug\APIJson\Bosnia.json" />
+    <None Include="bin\Debug\APIJson\Brazil.json" />
+    <None Include="bin\Debug\APIJson\British Virgin Islands.json" />
+    <None Include="bin\Debug\APIJson\Brunei.json" />
+    <None Include="bin\Debug\APIJson\Bulgaria.json" />
+    <None Include="bin\Debug\APIJson\Burkina Faso.json" />
+    <None Include="bin\Debug\APIJson\Cabo Verde.json" />
+    <None Include="bin\Debug\APIJson\Cambodia.json" />
+    <None Include="bin\Debug\APIJson\Cameroon.json" />
+    <None Include="bin\Debug\APIJson\Canada.json" />
+    <None Include="bin\Debug\APIJson\Cayman Islands.json" />
+    <None Include="bin\Debug\APIJson\Central African Republic.json" />
+    <None Include="bin\Debug\APIJson\Chad.json" />
+    <None Include="bin\Debug\APIJson\Channel Islands.json" />
+    <None Include="bin\Debug\APIJson\Chile.json" />
+    <None Include="bin\Debug\APIJson\China.json" />
+    <None Include="bin\Debug\APIJson\Coast D%27Ivoire.json" />
+    <None Include="bin\Debug\APIJson\Colombia.json" />
+    <None Include="bin\Debug\APIJson\Congo, the Democratic Republic of the.json" />
+    <None Include="bin\Debug\APIJson\Congo.json" />
+    <None Include="bin\Debug\APIJson\Costa Rica.json" />
+    <None Include="bin\Debug\APIJson\countries.json" />
+    <None Include="bin\Debug\APIJson\Croatia.json" />
+    <None Include="bin\Debug\APIJson\Cuba.json" />
+    <None Include="bin\Debug\APIJson\Curaçao.json" />
+    <None Include="bin\Debug\APIJson\Cyprus.json" />
+    <None Include="bin\Debug\APIJson\Czechia.json" />
+    <None Include="bin\Debug\APIJson\daily.json" />
+    <None Include="bin\Debug\APIJson\Denmark.json" />
+    <None Include="bin\Debug\APIJson\Diamond Princess.json" />
+    <None Include="bin\Debug\APIJson\Djibouti.json" />
+    <None Include="bin\Debug\APIJson\Dominica.json" />
+    <None Include="bin\Debug\APIJson\Dominican Republic.json" />
+    <None Include="bin\Debug\APIJson\Ecuador.json" />
+    <None Include="bin\Debug\APIJson\Egypt.json" />
+    <None Include="bin\Debug\APIJson\El Salvador.json" />
+    <None Include="bin\Debug\APIJson\Equatorial Guinea.json" />
+    <None Include="bin\Debug\APIJson\Eritrea.json" />
+    <None Include="bin\Debug\APIJson\Estonia.json" />
+    <None Include="bin\Debug\APIJson\Ethiopia.json" />
+    <None Include="bin\Debug\APIJson\Faroe Islands.json" />
+    <None Include="bin\Debug\APIJson\Fiji.json" />
+    <None Include="bin\Debug\APIJson\Finland.json" />
+    <None Include="bin\Debug\APIJson\France.json" />
+    <None Include="bin\Debug\APIJson\French Guiana.json" />
+    <None Include="bin\Debug\APIJson\French Polynesia.json" />
+    <None Include="bin\Debug\APIJson\Gabon.json" />
+    <None Include="bin\Debug\APIJson\Gambia.json" />
+    <None Include="bin\Debug\APIJson\Georgia.json" />
+    <None Include="bin\Debug\APIJson\Germany.json" />
+    <None Include="bin\Debug\APIJson\Ghana.json" />
+    <None Include="bin\Debug\APIJson\Gibraltar.json" />
+    <None Include="bin\Debug\APIJson\Greece.json" />
+    <None Include="bin\Debug\APIJson\Greenland.json" />
+    <None Include="bin\Debug\APIJson\Grenada.json" />
+    <None Include="bin\Debug\APIJson\Guadeloupe.json" />
+    <None Include="bin\Debug\APIJson\Guatemala.json" />
+    <None Include="bin\Debug\APIJson\Guinea-Bissau.json" />
+    <None Include="bin\Debug\APIJson\Guinea.json" />
+    <None Include="bin\Debug\APIJson\Guyana.json" />
+    <None Include="bin\Debug\APIJson\Haiti.json" />
+    <None Include="bin\Debug\APIJson\Holy See %28Vatican City State%29.json" />
+    <None Include="bin\Debug\APIJson\Honduras.json" />
+    <None Include="bin\Debug\APIJson\Hong Kong.json" />
+    <None Include="bin\Debug\APIJson\Hungary.json" />
+    <None Include="bin\Debug\APIJson\Iceland.json" />
+    <None Include="bin\Debug\APIJson\India.json" />
+    <None Include="bin\Debug\APIJson\Indonesia.json" />
+    <None Include="bin\Debug\APIJson\Iran, Islamic Republic of.json" />
+    <None Include="bin\Debug\APIJson\Iraq.json" />
+    <None Include="bin\Debug\APIJson\Ireland.json" />
+    <None Include="bin\Debug\APIJson\Isle of Man.json" />
+    <None Include="bin\Debug\APIJson\Israel.json" />
+    <None Include="bin\Debug\APIJson\Italy.json" />
+    <None Include="bin\Debug\APIJson\Jamaica.json" />
+    <None Include="bin\Debug\APIJson\Japan.json" />
+    <None Include="bin\Debug\APIJson\Jordan.json" />
+    <None Include="bin\Debug\APIJson\Kazakhstan.json" />
+    <None Include="bin\Debug\APIJson\Kenya.json" />
+    <None Include="bin\Debug\APIJson\Kuwait.json" />
+    <None Include="bin\Debug\APIJson\Kyrgyzstan.json" />
+    <None Include="bin\Debug\APIJson\Lao People%27s Democratic Republic.json" />
+    <None Include="bin\Debug\APIJson\Latvia.json" />
+    <None Include="bin\Debug\APIJson\Lebanon.json" />
+    <None Include="bin\Debug\APIJson\Liberia.json" />
+    <None Include="bin\Debug\APIJson\Libyan Arab Jamahiriya.json" />
+    <None Include="bin\Debug\APIJson\Liechtenstein.json" />
+    <None Include="bin\Debug\APIJson\Lithuania.json" />
+    <None Include="bin\Debug\APIJson\Luxembourg.json" />
+    <None Include="bin\Debug\APIJson\Macao.json" />
+    <None Include="bin\Debug\APIJson\Macedonia, the former Yugoslav Republic of.json" />
+    <None Include="bin\Debug\APIJson\Madagascar.json" />
+    <None Include="bin\Debug\APIJson\Malaysia.json" />
+    <None Include="bin\Debug\APIJson\Maldives.json" />
+    <None Include="bin\Debug\APIJson\Mali.json" />
+    <None Include="bin\Debug\APIJson\Malta.json" />
+    <None Include="bin\Debug\APIJson\Martinique.json" />
+    <None Include="bin\Debug\APIJson\Mauritania.json" />
+    <None Include="bin\Debug\APIJson\Mauritius.json" />
+    <None Include="bin\Debug\APIJson\Mayotte.json" />
+    <None Include="bin\Debug\APIJson\Mexico.json" />
+    <None Include="bin\Debug\APIJson\Moldova, Republic of.json" />
+    <None Include="bin\Debug\APIJson\Monaco.json" />
+    <None Include="bin\Debug\APIJson\Mongolia.json" />
+    <None Include="bin\Debug\APIJson\Montenegro.json" />
+    <None Include="bin\Debug\APIJson\Montserrat.json" />
+    <None Include="bin\Debug\APIJson\Morocco.json" />
+    <None Include="bin\Debug\APIJson\Mozambique.json" />
+    <None Include="bin\Debug\APIJson\Myanmar.json" />
+    <None Include="bin\Debug\APIJson\Namibia.json" />
+    <None Include="bin\Debug\APIJson\Nepal.json" />
+    <None Include="bin\Debug\APIJson\Netherlands.json" />
+    <None Include="bin\Debug\APIJson\New Caledonia.json" />
+    <None Include="bin\Debug\APIJson\New Zealand.json" />
+    <None Include="bin\Debug\APIJson\Nicaragua.json" />
+    <None Include="bin\Debug\APIJson\Niger.json" />
+    <None Include="bin\Debug\APIJson\Nigeria.json" />
+    <None Include="bin\Debug\APIJson\Norway.json" />
+    <None Include="bin\Debug\APIJson\Oman.json" />
+    <None Include="bin\Debug\APIJson\Pakistan.json" />
+    <None Include="bin\Debug\APIJson\Palestinian Territory, Occupied.json" />
+    <None Include="bin\Debug\APIJson\Panama.json" />
+    <None Include="bin\Debug\APIJson\Papua New Guinea.json" />
+    <None Include="bin\Debug\APIJson\Paraguay.json" />
+    <None Include="bin\Debug\APIJson\Peru.json" />
+    <None Include="bin\Debug\APIJson\Philippines.json" />
+    <None Include="bin\Debug\APIJson\Poland.json" />
+    <None Include="bin\Debug\APIJson\Portugal.json" />
+    <None Include="bin\Debug\APIJson\Qatar.json" />
+    <None Include="bin\Debug\APIJson\Romania.json" />
+    <None Include="bin\Debug\APIJson\Russia.json" />
+    <None Include="bin\Debug\APIJson\Rwanda.json" />
+    <None Include="bin\Debug\APIJson\Réunion.json" />
+    <None Include="bin\Debug\APIJson\S. Korea.json" />
+    <None Include="bin\Debug\APIJson\Saint Kitts and Nevis.json" />
+    <None Include="bin\Debug\APIJson\Saint Lucia.json" />
+    <None Include="bin\Debug\APIJson\Saint Martin.json" />
+    <None Include="bin\Debug\APIJson\Saint Vincent and the Grenadines.json" />
+    <None Include="bin\Debug\APIJson\San Marino.json" />
+    <None Include="bin\Debug\APIJson\Saudi Arabia.json" />
+    <None Include="bin\Debug\APIJson\Senegal.json" />
+    <None Include="bin\Debug\APIJson\Serbia.json" />
+    <None Include="bin\Debug\APIJson\Seychelles.json" />
+    <None Include="bin\Debug\APIJson\Singapore.json" />
+    <None Include="bin\Debug\APIJson\Sint Maarten.json" />
+    <None Include="bin\Debug\APIJson\Slovakia.json" />
+    <None Include="bin\Debug\APIJson\Slovenia.json" />
+    <None Include="bin\Debug\APIJson\Somalia.json" />
+    <None Include="bin\Debug\APIJson\South Africa.json" />
+    <None Include="bin\Debug\APIJson\Spain.json" />
+    <None Include="bin\Debug\APIJson\Sri Lanka.json" />
+    <None Include="bin\Debug\APIJson\St. Barth.json" />
+    <None Include="bin\Debug\APIJson\Sudan.json" />
+    <None Include="bin\Debug\APIJson\Suriname.json" />
+    <None Include="bin\Debug\APIJson\Swaziland.json" />
+    <None Include="bin\Debug\APIJson\Sweden.json" />
+    <None Include="bin\Debug\APIJson\Switzerland.json" />
+    <None Include="bin\Debug\APIJson\Syrian Arab Republic.json" />
+    <None Include="bin\Debug\APIJson\Taiwan.json" />
+    <None Include="bin\Debug\APIJson\Tanzania, United Republic of.json" />
+    <None Include="bin\Debug\APIJson\Thailand.json" />
+    <None Include="bin\Debug\APIJson\Timor-Leste.json" />
+    <None Include="bin\Debug\APIJson\Togo.json" />
+    <None Include="bin\Debug\APIJson\Trinidad and Tobago.json" />
+    <None Include="bin\Debug\APIJson\Tunisia.json" />
+    <None Include="bin\Debug\APIJson\Turkey.json" />
+    <None Include="bin\Debug\APIJson\Turks and Caicos Islands.json" />
+    <None Include="bin\Debug\APIJson\UAE.json" />
+    <None Include="bin\Debug\APIJson\Uganda.json" />
+    <None Include="bin\Debug\APIJson\UK.json" />
+    <None Include="bin\Debug\APIJson\Ukraine.json" />
+    <None Include="bin\Debug\APIJson\Uruguay.json" />
+    <None Include="bin\Debug\APIJson\USA.json" />
+    <None Include="bin\Debug\APIJson\Uzbekistan.json" />
+    <None Include="bin\Debug\APIJson\Venezuela, Bolivarian Republic of.json" />
+    <None Include="bin\Debug\APIJson\Viet Nam.json" />
+    <None Include="bin\Debug\APIJson\Zambia.json" />
+    <None Include="bin\Debug\APIJson\Zimbabwe.json" />
+    <None Include="COVID-19_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -268,6 +528,21 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="output-onlinepngtools%284%29%281%29.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

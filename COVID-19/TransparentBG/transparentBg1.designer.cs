@@ -45,9 +45,10 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "transparentBg";
-            this.Opacity = 0.7D;
+            this.Opacity = 0.5D;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.TransparencyKey = System.Drawing.Color.Transparent;
             this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.transparentForm_Load);
             this.ResumeLayout(false);

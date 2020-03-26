@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace COVID_19.Classes
 {
@@ -21,12 +19,22 @@ namespace COVID_19.Classes
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
 
-                var jCOVIDData = JsonConvert.DeserializeObject<APIData.DailyData_v1>(_json, jsonSerializerSetting);
-
-                w = jCOVIDData.cases;
-                x = jCOVIDData.deaths;
-                y = jCOVIDData.recovered;
-                z = epoch2string(jCOVIDData.updated);
+                if (Properties.Settings.Default.isInternet)
+                {
+                    var jCOVIDData = JsonConvert.DeserializeObject<APIData.DailyData_v1>(_json, jsonSerializerSetting);
+                    w = jCOVIDData.cases;
+                    x = jCOVIDData.deaths;
+                    y = jCOVIDData.recovered;
+                    z = epoch2string(jCOVIDData.updated);
+                }
+                else
+                {
+                    var jCOVIDData = JsonConvert.DeserializeObject<APIData.DailyData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                    w = jCOVIDData.cases;
+                    x = jCOVIDData.deaths;
+                    y = jCOVIDData.recovered;
+                    z = epoch2string(jCOVIDData.updated);
+                }
             }
             catch (Exception ex)
             {
@@ -38,7 +46,7 @@ namespace COVID_19.Classes
 
         private string epoch2string(Int64 epoch)
         {
-            return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(epoch).ToString("yyyy/MM/dd " 
+            return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(epoch).ToString("yyyy/MM/dd "
                 + Environment.NewLine + "hh:mm:ss tt");
         }
 
@@ -53,11 +61,23 @@ namespace COVID_19.Classes
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
 
-                var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
-
-                foreach (var val in jcountriesData)
+                if (Properties.Settings.Default.isInternet)
                 {
-                    countryandcases.Add(Tuple.Create(val.country, val.cases, val.recovered, val.countryInfo.flag));
+                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
+
+                    foreach (var val in jcountriesData)
+                    {
+                        countryandcases.Add(Tuple.Create(val.country, val.cases, val.recovered, val.countryInfo.flag));
+                    }
+                }
+                else
+                {
+                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
+
+                    foreach (var val in jcountriesData)
+                    {
+                        countryandcases.Add(Tuple.Create(val.country, val.cases, val.recovered, val.countryInfo.flag));
+                    }
                 }
             }
             catch (Exception ex)
@@ -79,13 +99,27 @@ namespace COVID_19.Classes
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
 
-                var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
-
-                foreach (var val in jcountriesData)
+                if (Properties.Settings.Default.isInternet)
                 {
-                    datatogrid.Add(new Tuple<string, long, long, long, long, long, long, Tuple<long, string>>
-                        (val.country, val.cases, val.todayCases, val.deaths,
-                        val.todayDeaths, val.recovered, val.active, Tuple.Create(val.critical, val.countryInfo.flag)));
+                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
+
+                    foreach (var val in jcountriesData)
+                    {
+                        datatogrid.Add(new Tuple<string, long, long, long, long, long, long, Tuple<long, string>>
+                            (val.country, val.cases, val.todayCases, val.deaths,
+                            val.todayDeaths, val.recovered, val.active, Tuple.Create(val.critical, val.countryInfo.flag)));
+                    }
+                }
+                else
+                {
+                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
+
+                    foreach (var val in jcountriesData)
+                    {
+                        datatogrid.Add(new Tuple<string, long, long, long, long, long, long, Tuple<long, string>>
+                            (val.country, val.cases, val.todayCases, val.deaths,
+                            val.todayDeaths, val.recovered, val.active, Tuple.Create(val.critical, val.countryInfo.flag)));
+                    }
                 }
             }
             catch (Exception ex)
@@ -98,10 +132,10 @@ namespace COVID_19.Classes
 
         public (Int64, Int64, Int64, Int64, Int64, Int64, Int64, string, string, string) getSpecificCountryData(string _json)
         {
-            Int64 cases = 0, todayCases = 0, 
-                deaths = 0, todayDeaths = 0, 
-                recovered = 0, active = 0, 
-                critical = 0; 
+            Int64 cases = 0, todayCases = 0,
+                deaths = 0, todayDeaths = 0,
+                recovered = 0, active = 0,
+                critical = 0;
             string flag = string.Empty;
             string iso2 = string.Empty;
             string iso3 = string.Empty;
@@ -113,17 +147,34 @@ namespace COVID_19.Classes
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
 
-                var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(_json, jsonSerializerSetting);
-                cases = jdata.cases;
-                todayCases = jdata.todayCases;
-                deaths = jdata.deaths;
-                todayDeaths = jdata.todayDeaths;
-                recovered = jdata.recovered;
-                active = jdata.active;
-                critical = jdata.critical;
-                flag = jdata.countryInfo.flag;
-                iso2 = jdata.countryInfo.iso2;
-                iso3 = jdata.countryInfo.iso3;
+                if (Properties.Settings.Default.isInternet)
+                {
+                    var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(_json, jsonSerializerSetting);
+                    cases = jdata.cases;
+                    todayCases = jdata.todayCases;
+                    deaths = jdata.deaths;
+                    todayDeaths = jdata.todayDeaths;
+                    recovered = jdata.recovered;
+                    active = jdata.active;
+                    critical = jdata.critical;
+                    flag = jdata.countryInfo.flag;
+                    iso2 = jdata.countryInfo.iso2;
+                    iso3 = jdata.countryInfo.iso3;
+                }
+                else
+                {
+                    var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                    cases = jdata.cases;
+                    todayCases = jdata.todayCases;
+                    deaths = jdata.deaths;
+                    todayDeaths = jdata.todayDeaths;
+                    recovered = jdata.recovered;
+                    active = jdata.active;
+                    critical = jdata.critical;
+                    flag = jdata.countryInfo.flag;
+                    iso2 = jdata.countryInfo.iso2;
+                    iso3 = jdata.countryInfo.iso3;
+                }
             }
             catch (Exception ex)
             {
@@ -144,11 +195,23 @@ namespace COVID_19.Classes
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
 
-                var jcountryname = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
-
-                foreach (var val in jcountryname)
+                if (Properties.Settings.Default.isInternet)
                 {
-                    countryandcases.Add(val.country);
+                    var jcountryname = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
+
+                    foreach (var val in jcountryname)
+                    {
+                        countryandcases.Add(val.country);
+                    }
+                }
+                else
+                {
+                    var jcountryname = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
+
+                    foreach (var val in jcountryname)
+                    {
+                        countryandcases.Add(val.country);
+                    }
                 }
             }
             catch (Exception ex)
@@ -170,11 +233,23 @@ namespace COVID_19.Classes
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
 
-                var jtimelinedata = JsonConvert.DeserializeObject<List<APIData.TimelineData_v2>>(_json, jsonSerializerSetting);
-
-                foreach (var val in jtimelinedata)
+                if (Properties.Settings.Default.isInternet)
                 {
-                    timeline.Add(Tuple.Create(val.reportDate, val.Confirmed.total, val.Deaths.total));
+                    var jtimelinedata = JsonConvert.DeserializeObject<List<APIData.TimelineData_v2>>(_json, jsonSerializerSetting);
+
+                    foreach (var val in jtimelinedata)
+                    {
+                        timeline.Add(Tuple.Create(val.reportDate, val.Confirmed.total, val.Deaths.total));
+                    }
+                }
+                else
+                {
+                    var jtimelinedata = JsonConvert.DeserializeObject<List<APIData.TimelineData_v2>>(File.ReadAllText(_json), jsonSerializerSetting);
+
+                    foreach (var val in jtimelinedata)
+                    {
+                        timeline.Add(Tuple.Create(val.reportDate, val.Confirmed.total, val.Deaths.total));
+                    }
                 }
             }
             catch (Exception ex)

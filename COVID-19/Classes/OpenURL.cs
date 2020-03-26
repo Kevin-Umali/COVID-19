@@ -46,9 +46,69 @@ namespace COVID_19.Classes
             {
                 using (Stream stream = httpWebReponse.GetResponseStream())
                 {
-                    return Image.FromStream(stream);
+                    if (Properties.Settings.Default.isInternet)
+                    {
+                        return Image.FromStream(stream);
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
+        }
+
+        public static bool Ping(string url)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+                request.Timeout = 3000;
+                request.AllowAutoRedirect = false; // find out if this site is up and don't follow a redirector
+                request.Method = "HEAD";
+
+                using (var response = request.GetResponse())
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static string DownloadJson(string _url, string _name)
+        {
+            string x = string.Empty;
+            try
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson";
+                    var json = wc.DownloadString(_url);
+
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    else
+                    {
+                        File.Delete(@"" + Path.Combine(path, string.Format("{0}.json", _name)));
+                        using (StreamWriter outputFile = new StreamWriter(Path.Combine(path, string.Format("{0}.json", _name)), true))
+                        {
+                            outputFile.WriteLine(json);
+                            x = string.Format("Downloading and saving: {0}.json file to ~\\APIJson\\", _name);
+                        }
+                    }
+
+                }
+            }
+            catch (System.Exception ex)
+            {
+                x = ex.Message;
+            }
+            return x;
         }
     }
 }

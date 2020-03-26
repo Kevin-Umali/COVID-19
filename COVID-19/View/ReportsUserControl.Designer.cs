@@ -93,10 +93,10 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label25 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -150,6 +150,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 83);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(232, 103);
@@ -861,29 +862,17 @@
             this.panel13.Size = new System.Drawing.Size(615, 349);
             this.panel13.TabIndex = 19;
             // 
-            // label29
+            // label25
             // 
-            this.label29.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label29.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label29.Location = new System.Drawing.Point(0, 10);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(615, 34);
-            this.label29.TabIndex = 14;
-            this.label29.Text = "  World Statistic";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label30
-            // 
-            this.label30.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label30.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
-            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label30.Location = new System.Drawing.Point(0, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(615, 10);
-            this.label30.TabIndex = 15;
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Poppins SemiBold", 9.25F, System.Drawing.FontStyle.Bold);
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.label25.Location = new System.Drawing.Point(295, 17);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(301, 23);
+            this.label25.TabIndex = 18;
+            this.label25.Text = "Hover to see the value and drag to zoom out";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chart1
             // 
@@ -914,17 +903,29 @@
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
             // 
-            // label25
+            // label29
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Poppins SemiBold", 9.25F, System.Drawing.FontStyle.Bold);
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.label25.Location = new System.Drawing.Point(295, 17);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(301, 23);
-            this.label25.TabIndex = 18;
-            this.label25.Text = "Hover to see the value and drag to zoom out";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label29.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.Location = new System.Drawing.Point(0, 10);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(615, 34);
+            this.label29.TabIndex = 14;
+            this.label29.Text = "  World Statistic";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label30
+            // 
+            this.label30.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label30.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label30.Location = new System.Drawing.Point(0, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(615, 10);
+            this.label30.TabIndex = 15;
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ReportsUserControl
             // 
