@@ -5,7 +5,7 @@
 <h1 align="center">COVID-19 Desktop Application</h1>
 
 ## Why?
-As soon I saw someone posted web application for this covid-19, I search/research if some already created an a desktop application for covid-19 tracker since no I don't see any app. I decided to create and make it simple. [COVID-19 API](https://github.com/mathdroid/covid-19-api)
+As soon I saw someone posted web application for this covid-19, I search/research if some already created an a desktop application for covid-19 tracker since I don't see any app. I decided to create and make it simple. [COVID-19 API](https://github.com/mathdroid/covid-19-api)
 
 ## Interface
 <p align="center">
@@ -41,8 +41,6 @@ I have always wanted to keep the app simple to make sure it loads faster but sti
 
 * [Bunifu Framework](https://bunifuframework.com/) - The .net framework used
 * [Newtonsoft.Json](https://www.newtonsoft.com/json) - Used to deserialize json format
-* [API Used](https://github.com/mathdroid/covid-19-api) - Used to get data about covid-19
-* [Another API Used](https://github.com/NovelCOVID/API) - Another API used to get data about covid-19
 
 ## Color used
  - ![Color palette](Screenshots/Interface-Color1.PNG)
@@ -51,4 +49,5 @@ I have always wanted to keep the app simple to make sure it loads faster but sti
 ## Acknowledgments
 * Hat tip to anyone whose code was used
 * Inspiration for design
-* open sourced api for covid-19
+* [](https://github.com/mathdroid/covid-19-api) - Used to get data about covid-19
+* [](https://github.com/NovelCOVID/API) - Another API used to get data about covid-19
