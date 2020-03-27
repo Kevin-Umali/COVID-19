@@ -33,7 +33,7 @@ namespace COVID_19.View
             }
             catch (Exception ex)
             {
-                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -70,7 +70,7 @@ namespace COVID_19.View
             }
             catch (Exception ex)
             {
-                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -152,7 +152,7 @@ namespace COVID_19.View
             }
             catch (Exception ex)
             {
-                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+                Console.WriteLine(ex.Message);
             }
         }
 

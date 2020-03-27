@@ -55,7 +55,7 @@ namespace COVID_19
             }
             catch (Exception ex)
             {
-                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+                Console.WriteLine(ex.Message);
             }
         }
 

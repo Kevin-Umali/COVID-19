@@ -7,6 +7,7 @@ namespace COVID_19.Classes
 {
     class DeserializeJSON
     {
+        private readonly string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson";
         public (Int64, Int64, Int64, string) getDailyData(string _json)
         {
             Int64 w = 0, x = 0, y = 0;
@@ -163,17 +164,44 @@ namespace COVID_19.Classes
                 }
                 else
                 {
-                    var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
-                    cases = jdata.cases;
-                    todayCases = jdata.todayCases;
-                    deaths = jdata.deaths;
-                    todayDeaths = jdata.todayDeaths;
-                    recovered = jdata.recovered;
-                    active = jdata.active;
-                    critical = jdata.critical;
-                    flag = jdata.countryInfo.flag;
-                    iso2 = jdata.countryInfo.iso2;
-                    iso3 = jdata.countryInfo.iso3;
+                    if (!File.Exists(@"" + Path.Combine(path, string.Format("{0}.json", _json))))
+                    {
+                        System.Windows.Forms.DialogResult result = CustomizeDialog.CovidMsgBox.Show("No json.file found. Do you want to download this " +
+                        "'" + _json + "' json.file?", "Question");
+
+                        if (result == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            new CustomizeDialog.DownloadDialog(false, _json).ShowDialog();
+
+                            var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                            cases = jdata.cases;
+                            todayCases = jdata.todayCases;
+                            deaths = jdata.deaths;
+                            todayDeaths = jdata.todayDeaths;
+                            recovered = jdata.recovered;
+                            active = jdata.active;
+                            critical = jdata.critical;
+                            flag = jdata.countryInfo.flag;
+                            iso2 = jdata.countryInfo.iso2;
+                            iso3 = jdata.countryInfo.iso3;
+                        }
+                        else if (result == System.Windows.Forms.DialogResult.No)
+                        { }
+                    }
+                    else
+                    {
+                        var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                        cases = jdata.cases;
+                        todayCases = jdata.todayCases;
+                        deaths = jdata.deaths;
+                        todayDeaths = jdata.todayDeaths;
+                        recovered = jdata.recovered;
+                        active = jdata.active;
+                        critical = jdata.critical;
+                        flag = jdata.countryInfo.flag;
+                        iso2 = jdata.countryInfo.iso2;
+                        iso3 = jdata.countryInfo.iso3;
+                    }
                 }
             }
             catch (Exception ex)

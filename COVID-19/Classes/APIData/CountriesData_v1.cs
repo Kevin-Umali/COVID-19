@@ -19,13 +19,13 @@ namespace COVID_19.Classes.APIData
 
         public class CountryInfo
         {
-            public string iso2 { get; set; }
-            public string iso3 { get; set; }
             public string _id { get; set; }
             public Int64 lat { get; set; }
             [JsonProperty("long")]
             public Int64 _long { get; set; }
             public string flag { get; set; }
+            public string iso2 { get; set; }
+            public string iso3 { get; set; }
 
         }
     }

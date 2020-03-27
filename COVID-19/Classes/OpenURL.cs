@@ -81,11 +81,11 @@ namespace COVID_19.Classes
         public static string DownloadJson(string _url, string _name)
         {
             string x = string.Empty;
+            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson";
             try
             {
                 using (WebClient wc = new WebClient())
                 {
-                    string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson";
                     var json = wc.DownloadString(_url);
 
                     if (!Directory.Exists(path))
@@ -106,6 +106,7 @@ namespace COVID_19.Classes
             }
             catch (System.Exception ex)
             {
+                File.Delete(@"" + Path.Combine(path, string.Format("{0}.json", _name)));
                 x = ex.Message;
             }
             return x;

@@ -9,9 +9,13 @@ namespace COVID_19.CustomizeDialog
 {
     public partial class DownloadDialog : Form
     {
-        public DownloadDialog()
+        private bool _isAll = true;
+        private string _country = string.Empty;
+        public DownloadDialog(bool isAll, string country)
         {
             InitializeComponent();
+            _isAll = isAll;
+            _country = country;
         }
 
         private void bunifuButton2_Click(object sender, EventArgs e)
@@ -21,7 +25,10 @@ namespace COVID_19.CustomizeDialog
 
         private void DownloadDialog_Load(object sender, EventArgs e)
         {
-            timer1.Start();
+            if (_isAll)
+                timer1.Start();
+            else
+                timer2.Start();
         }
         private async Task downloadJson()
         {
@@ -38,20 +45,32 @@ namespace COVID_19.CustomizeDialog
 
                 //Getting data from json.
                 var countrynamedata = deserializeJson.getAllCountryName(response);
-
-                bunifuProgressBar1.MaximumValue = countrynamedata.Count() + 3;
-
-                SetStatus(Classes.OpenURL.DownloadJson("https://corona.lmao.ninja/all", "all"));
-
-                SetStatus(Classes.OpenURL.DownloadJson("https://corona.lmao.ninja/countries/", "countries"));
-
-                SetStatus(Classes.OpenURL.DownloadJson("https://covid19.mathdro.id/api/daily", "daily"));
-
-                foreach (var item in countrynamedata)
+                if (countrynamedata.Count() >= 1)
                 {
-                    SetStatus(Classes.OpenURL.DownloadJson(
-                        string.Format("https://corona.lmao.ninja/countries/{0}",
-                        item.ToString()), item.ToString()));
+                    bunifuProgressBar1.MaximumValue = countrynamedata.Count() + 3;
+
+                    foreach (var item in countrynamedata)
+                    {
+                        SetStatus(Classes.OpenURL.DownloadJson(
+                            string.Format("https://corona.lmao.ninja/countries/{0}",
+                            item.ToString()), item.ToString()));
+                    }
+
+                    SetStatus(Classes.OpenURL.DownloadJson("https://corona.lmao.ninja/all", "all"));
+
+                    SetStatus(Classes.OpenURL.DownloadJson("https://corona.lmao.ninja/countries/", "countries"));
+
+                    SetStatus(Classes.OpenURL.DownloadJson("https://covid19.mathdro.id/api/daily", "daily"));
+
+
+
+                    lblDescription.Text = "Download Complete.";
+                }
+                else
+                {
+                    bunifuProgressBar1.MaximumValue = 1;
+                    SetStatus("Can't Connect to API");
+                    bunifuButton1.Visible = true;
                 }
                 await Task.CompletedTask;
             }
@@ -60,6 +79,44 @@ namespace COVID_19.CustomizeDialog
                 lblDescription.Text = ex.Message;
             }
         }
+        private async Task downloadJson1(string ccountry)
+        {
+            try
+            {
+                string response = string.Empty;
+
+                GETHandler apiHandler = new GETHandler();
+
+                DeserializeJSON deserializeJson = new DeserializeJSON();
+
+                apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
+                response = apiHandler.GETRequest();
+
+                //Getting data from json.
+                var countrynamedata = deserializeJson.getAllCountryName(response);
+
+                bunifuProgressBar1.MaximumValue = 1;
+
+                SetStatus(Classes.OpenURL.DownloadJson(
+                     string.Format("https://corona.lmao.ninja/countries/{0}",
+                     ccountry), ccountry));
+
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                lblDescription.Text = ex.Message;
+            }
+        }
+        private async void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            UseWaitCursor = true;
+            await downloadJson();
+            UseWaitCursor = false;
+            bunifuButton2.Visible = true;
+        }
+
         private void SetStatus(string status)
         {
             lblDescription.Text = status;
@@ -74,14 +131,24 @@ namespace COVID_19.CustomizeDialog
 
             Application.DoEvents();
         }
-        private async void timer1_Tick(object sender, EventArgs e)
+
+        private async void timer2_TickAsync(object sender, EventArgs e)
         {
-            timer1.Stop();
+            timer2.Stop();
             UseWaitCursor = true;
-            await downloadJson();
+            await downloadJson1(_country);
             UseWaitCursor = false;
             lblDescription.Text = "Download Complete.";
             bunifuButton2.Visible = true;
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+            bunifuProgressBar1.Value = 1;
+            lblDescription.Text = "Retrying to connect to the API Server";
+            bunifuButton1.Visible = false;
+            bunifuButton2.Visible = false;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace COVID_19
@@ -16,7 +17,19 @@ namespace COVID_19
 
             if (result == DialogResult.Yes)
             {
-                new CustomizeDialog.DownloadDialog().ShowDialog();
+                new CustomizeDialog.DownloadDialog(true, "").ShowDialog();
+
+                DialogResult result1 = CustomizeDialog.CovidMsgBox.Show("Do you want to Load Updated COVID-19 Data from WebAPI? (Internet Required)", "Question");
+                if (result1 == DialogResult.Yes)
+                {
+                    Properties.Settings.Default.isInternet = true;
+                    Properties.Settings.Default.Save();
+                }
+                else if (result1 == DialogResult.No)
+                {
+                    Properties.Settings.Default.isInternet = false;
+                    Properties.Settings.Default.Save();
+                }
             }
             else if (result == DialogResult.No)
             {
@@ -36,6 +49,8 @@ namespace COVID_19
 
             if (Properties.Settings.Default.isInternet)
             {
+                isOnline.BackColor = Color.FromArgb(28, 177, 66);
+                lblonline.Text = "You're using online mode";
                 if (Classes.OpenURL.Ping("https://corona.lmao.ninja/all"))
                 {
                     DisposeUserControl(new View.OverviewUserControl());
@@ -47,8 +62,12 @@ namespace COVID_19
             }
             else
             {
+                isOnline.BackColor = Color.FromArgb(249, 52, 94);
+                lblonline.Text = "You're using offline mode";
                 DisposeUserControl(new View.OverviewUserControl());
             }
+
+
         }
         void DisposeUserControl(UserControl uc)
         {

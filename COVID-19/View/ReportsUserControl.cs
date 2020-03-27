@@ -28,7 +28,7 @@ namespace COVID_19.View
             }
             catch (Exception ex)
             {
-                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -63,7 +63,7 @@ namespace COVID_19.View
             }
             catch (Exception ex)
             {
-                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -149,6 +149,10 @@ namespace COVID_19.View
                 {
                     pictureBox1.LoadAsync(countrydata.Item8);
                 }
+                else
+                {
+
+                }
                 lbliso2.Text = countrydata.Item9;
                 lbliso3.Text = countrydata.Item10;
 
@@ -156,7 +160,7 @@ namespace COVID_19.View
             }
             catch (Exception ex)
             {
-                CustomizeDialog.CovidMsgBox.Show(ex.Message, "Information");
+                Console.WriteLine(ex.Message);
             }
         }
 
