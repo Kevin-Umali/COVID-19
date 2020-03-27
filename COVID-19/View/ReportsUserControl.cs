@@ -130,7 +130,7 @@ namespace COVID_19.View
                         + string.Format(@"\APIJson\{0}.json", _countryname);
                 }
                 //Getting data from json.
-                var countrydata = deserializeJson.getSpecificCountryData(response);
+                var countrydata = deserializeJson.getSpecificCountryData(response, _countryname);
 
                 //cases, todayCases, deaths, todayDeaths, recovered, active, critical, flag, iso2, iso3
                 lblcases.Text = string.Format("{0:n0}", countrydata.Item1);

@@ -131,7 +131,7 @@ namespace COVID_19.Classes
             return datatogrid;
         }
 
-        public (Int64, Int64, Int64, Int64, Int64, Int64, Int64, string, string, string) getSpecificCountryData(string _json)
+        public (Int64, Int64, Int64, Int64, Int64, Int64, Int64, string, string, string) getSpecificCountryData(string _json, string _countryname)
         {
             Int64 cases = 0, todayCases = 0,
                 deaths = 0, todayDeaths = 0,
@@ -164,14 +164,14 @@ namespace COVID_19.Classes
                 }
                 else
                 {
-                    if (!File.Exists(@"" + Path.Combine(path, string.Format("{0}.json", _json))))
+                    if (!File.Exists(@"" + Path.Combine(path, string.Format("{0}.json", _countryname))))
                     {
                         System.Windows.Forms.DialogResult result = CustomizeDialog.CovidMsgBox.Show("No json.file found. Do you want to download this " +
-                        "'" + _json + "' json.file?", "Question");
+                        "'" + _countryname + "' json.file?", "Question");
 
                         if (result == System.Windows.Forms.DialogResult.Yes)
                         {
-                            new CustomizeDialog.DownloadDialog(false, _json).ShowDialog();
+                            new CustomizeDialog.DownloadDialog(false, _countryname).ShowDialog();
 
                             var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
                             cases = jdata.cases;

@@ -20,6 +20,8 @@ namespace COVID_19.CustomizeDialog
 
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.isInternet = false;
+            Properties.Settings.Default.Save();
             this.Dispose();
         }
 
@@ -92,15 +94,27 @@ namespace COVID_19.CustomizeDialog
                 apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
                 response = apiHandler.GETRequest();
 
-                //Getting data from json.
                 var countrynamedata = deserializeJson.getAllCountryName(response);
 
-                bunifuProgressBar1.MaximumValue = 1;
+                Console.WriteLine(countrynamedata.Count().ToString());
+                if (countrynamedata.Count() > 0)
+                {
+                    //Getting data from json.
 
-                SetStatus(Classes.OpenURL.DownloadJson(
-                     string.Format("https://corona.lmao.ninja/countries/{0}",
-                     ccountry), ccountry));
+                    bunifuProgressBar1.MaximumValue = 1;
 
+                    SetStatus(Classes.OpenURL.DownloadJson(
+                         string.Format("https://corona.lmao.ninja/countries/{0}",
+                         ccountry), ccountry));
+
+                    lblDescription.Text = "Download Complete.";
+                }
+                else
+                {
+                    bunifuProgressBar1.MaximumValue = 1;
+                    SetStatus("Download Failed");
+                    bunifuButton1.Visible = true;
+                }
                 await Task.CompletedTask;
             }
             catch (Exception ex)
@@ -134,21 +148,33 @@ namespace COVID_19.CustomizeDialog
 
         private async void timer2_TickAsync(object sender, EventArgs e)
         {
+            Properties.Settings.Default.isInternet = true;
+            Properties.Settings.Default.Save();
             timer2.Stop();
             UseWaitCursor = true;
             await downloadJson1(_country);
             UseWaitCursor = false;
-            lblDescription.Text = "Download Complete.";
             bunifuButton2.Visible = true;
         }
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            timer1.Start();
-            bunifuProgressBar1.Value = 1;
-            lblDescription.Text = "Retrying to connect to the API Server";
-            bunifuButton1.Visible = false;
-            bunifuButton2.Visible = false;
+            if (_isAll)
+            {
+                timer1.Start();
+                bunifuProgressBar1.Value = 1;
+                lblDescription.Text = "Retrying to connect to the API Server";
+                bunifuButton1.Visible = false;
+                bunifuButton2.Visible = false;
+            }
+            else
+            {
+                timer2.Start();
+                bunifuProgressBar1.Value = 1;
+                lblDescription.Text = "Retrying to download";
+                bunifuButton1.Visible = false;
+                bunifuButton2.Visible = false;
+            }
         }
     }
 }
