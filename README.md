@@ -36,6 +36,8 @@ I have always wanted to keep the app simple to make sure it loads faster but sti
  - Ratio of Recovery and Death
  - Donation
  - Prevention for covid-19
+ - Download json.file for offline use
+ - Offline and Online mode
  
  ## Built With
 
