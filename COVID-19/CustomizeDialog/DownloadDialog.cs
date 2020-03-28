@@ -9,6 +9,7 @@ namespace COVID_19.CustomizeDialog
 {
     public partial class DownloadDialog : Form
     {
+        //e
         private bool _isAll = true;
         private string _country = string.Empty;
         public DownloadDialog(bool isAll, string country)

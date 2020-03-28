@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace COVID_19.Classes.APIData
+namespace COVID_19.API.APIData
 {
-    class CountriesData_v1
+    class CountryData_v1
     {
-        /* ANOTHER API FROM https://corona.lmao.ninja/countries/ */
+        /* ANOTHER API FROM https://corona.lmao.ninja/all */
         public string country { get; set; }
         public CountryInfo countryInfo { get; set; }
         public Int64 cases { get; set; }
@@ -26,7 +26,6 @@ namespace COVID_19.Classes.APIData
             public string flag { get; set; }
             public string iso2 { get; set; }
             public string iso3 { get; set; }
-
         }
     }
 }

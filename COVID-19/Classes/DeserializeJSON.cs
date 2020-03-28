@@ -22,7 +22,7 @@ namespace COVID_19.Classes
 
                 if (Properties.Settings.Default.isInternet)
                 {
-                    var jCOVIDData = JsonConvert.DeserializeObject<APIData.DailyData_v1>(_json, jsonSerializerSetting);
+                    var jCOVIDData = JsonConvert.DeserializeObject<API.APIData.DailyData_v1>(_json, jsonSerializerSetting);
                     w = jCOVIDData.cases;
                     x = jCOVIDData.deaths;
                     y = jCOVIDData.recovered;
@@ -30,7 +30,7 @@ namespace COVID_19.Classes
                 }
                 else
                 {
-                    var jCOVIDData = JsonConvert.DeserializeObject<APIData.DailyData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                    var jCOVIDData = JsonConvert.DeserializeObject<API.APIData.DailyData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
                     w = jCOVIDData.cases;
                     x = jCOVIDData.deaths;
                     y = jCOVIDData.recovered;
@@ -64,7 +64,7 @@ namespace COVID_19.Classes
 
                 if (Properties.Settings.Default.isInternet)
                 {
-                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
+                    var jcountriesData = JsonConvert.DeserializeObject<List<API.APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
 
                     foreach (var val in jcountriesData)
                     {
@@ -73,7 +73,7 @@ namespace COVID_19.Classes
                 }
                 else
                 {
-                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
+                    var jcountriesData = JsonConvert.DeserializeObject<List<API.APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
 
                     foreach (var val in jcountriesData)
                     {
@@ -102,7 +102,7 @@ namespace COVID_19.Classes
 
                 if (Properties.Settings.Default.isInternet)
                 {
-                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
+                    var jcountriesData = JsonConvert.DeserializeObject<List<API.APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
 
                     foreach (var val in jcountriesData)
                     {
@@ -113,7 +113,7 @@ namespace COVID_19.Classes
                 }
                 else
                 {
-                    var jcountriesData = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
+                    var jcountriesData = JsonConvert.DeserializeObject<List<API.APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
 
                     foreach (var val in jcountriesData)
                     {
@@ -150,7 +150,7 @@ namespace COVID_19.Classes
 
                 if (Properties.Settings.Default.isInternet)
                 {
-                    var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(_json, jsonSerializerSetting);
+                    var jdata = JsonConvert.DeserializeObject<API.APIData.CountryData_v1>(_json, jsonSerializerSetting);
                     cases = jdata.cases;
                     todayCases = jdata.todayCases;
                     deaths = jdata.deaths;
@@ -173,7 +173,7 @@ namespace COVID_19.Classes
                         {
                             new CustomizeDialog.DownloadDialog(false, _countryname).ShowDialog();
 
-                            var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                            var jdata = JsonConvert.DeserializeObject<API.APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
                             cases = jdata.cases;
                             todayCases = jdata.todayCases;
                             deaths = jdata.deaths;
@@ -190,7 +190,7 @@ namespace COVID_19.Classes
                     }
                     else
                     {
-                        var jdata = JsonConvert.DeserializeObject<APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                        var jdata = JsonConvert.DeserializeObject<API.APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
                         cases = jdata.cases;
                         todayCases = jdata.todayCases;
                         deaths = jdata.deaths;
@@ -225,7 +225,7 @@ namespace COVID_19.Classes
 
                 if (Properties.Settings.Default.isInternet)
                 {
-                    var jcountryname = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
+                    var jcountryname = JsonConvert.DeserializeObject<List<API.APIData.CountriesData_v1>>(_json, jsonSerializerSetting);
 
                     foreach (var val in jcountryname)
                     {
@@ -234,7 +234,7 @@ namespace COVID_19.Classes
                 }
                 else
                 {
-                    var jcountryname = JsonConvert.DeserializeObject<List<APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
+                    var jcountryname = JsonConvert.DeserializeObject<List<API.APIData.CountriesData_v1>>(File.ReadAllText(_json), jsonSerializerSetting);
 
                     foreach (var val in jcountryname)
                     {
@@ -263,7 +263,7 @@ namespace COVID_19.Classes
 
                 if (Properties.Settings.Default.isInternet)
                 {
-                    var jtimelinedata = JsonConvert.DeserializeObject<List<APIData.TimelineData_v2>>(_json, jsonSerializerSetting);
+                    var jtimelinedata = JsonConvert.DeserializeObject<List<API.APIData.TimelineData_v2>>(_json, jsonSerializerSetting);
 
                     foreach (var val in jtimelinedata)
                     {
@@ -272,7 +272,7 @@ namespace COVID_19.Classes
                 }
                 else
                 {
-                    var jtimelinedata = JsonConvert.DeserializeObject<List<APIData.TimelineData_v2>>(File.ReadAllText(_json), jsonSerializerSetting);
+                    var jtimelinedata = JsonConvert.DeserializeObject<List<API.APIData.TimelineData_v2>>(File.ReadAllText(_json), jsonSerializerSetting);
 
                     foreach (var val in jtimelinedata)
                     {

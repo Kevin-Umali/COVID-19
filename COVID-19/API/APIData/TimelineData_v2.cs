@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace COVID_19.Classes.APIData
+namespace COVID_19.API.APIData
 {
     class TimelineData_v2
     {

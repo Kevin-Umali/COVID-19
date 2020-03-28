@@ -29,13 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsUserControl));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -93,10 +89,13 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.label25 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.bunifuDataViz1 = new Bunifu.DataViz.WinForms.BunifuDataViz();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -111,7 +110,6 @@
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -777,11 +775,11 @@
             this.bunifuButton2.ColorContrastOnClick = 45;
             this.bunifuButton2.ColorContrastOnHover = 45;
             this.bunifuButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.bunifuButton2.CustomizableEdges = borderEdges1;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.bunifuButton2.CustomizableEdges = borderEdges4;
             this.bunifuButton2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.bunifuButton2.DisabledBorderColor = System.Drawing.Color.Empty;
             this.bunifuButton2.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -802,24 +800,24 @@
             this.bunifuButton2.IndicateFocus = true;
             this.bunifuButton2.Location = new System.Drawing.Point(21, 38);
             this.bunifuButton2.Name = "bunifuButton2";
-            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties1.BorderRadius = 3;
-            stateProperties1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties1.BorderThickness = 1;
-            stateProperties1.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties1.ForeColor = System.Drawing.Color.White;
-            stateProperties1.IconLeftImage = null;
-            stateProperties1.IconRightImage = null;
-            this.bunifuButton2.onHoverState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties2.BorderRadius = 3;
-            stateProperties2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties2.BorderThickness = 1;
-            stateProperties2.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties2.ForeColor = System.Drawing.Color.White;
-            stateProperties2.IconLeftImage = null;
-            stateProperties2.IconRightImage = null;
-            this.bunifuButton2.OnPressedState = stateProperties2;
+            stateProperties7.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties7.BorderRadius = 3;
+            stateProperties7.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties7.BorderThickness = 1;
+            stateProperties7.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties7.ForeColor = System.Drawing.Color.White;
+            stateProperties7.IconLeftImage = null;
+            stateProperties7.IconRightImage = null;
+            this.bunifuButton2.onHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties8.BorderRadius = 3;
+            stateProperties8.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties8.BorderThickness = 1;
+            stateProperties8.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties8.ForeColor = System.Drawing.Color.White;
+            stateProperties8.IconLeftImage = null;
+            stateProperties8.IconRightImage = null;
+            this.bunifuButton2.OnPressedState = stateProperties8;
             this.bunifuButton2.Size = new System.Drawing.Size(132, 45);
             this.bunifuButton2.TabIndex = 41;
             this.bunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -853,55 +851,17 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.White;
+            this.panel13.Controls.Add(this.label17);
             this.panel13.Controls.Add(this.label25);
-            this.panel13.Controls.Add(this.chart1);
+            this.panel13.Controls.Add(this.label27);
+            this.panel13.Controls.Add(this.label28);
+            this.panel13.Controls.Add(this.bunifuDataViz1);
             this.panel13.Controls.Add(this.label29);
             this.panel13.Controls.Add(this.label30);
             this.panel13.Location = new System.Drawing.Point(395, 226);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(615, 349);
             this.panel13.TabIndex = 19;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Poppins SemiBold", 9.25F, System.Drawing.FontStyle.Bold);
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.label25.Location = new System.Drawing.Point(295, 17);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(301, 23);
-            this.label25.TabIndex = 18;
-            this.label25.Text = "Hover to see the value and drag to zoom out";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Cross;
-            legend1.IsEquallySpacedItems = true;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 44);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(54)))), ((int)(((byte)(255))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(52)))), ((int)(((byte)(94)))))};
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series1.Legend = "Legend1";
-            series1.Name = "Cases";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series2.Legend = "Legend1";
-            series2.Name = "Death";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(615, 305);
-            this.chart1.TabIndex = 16;
-            this.chart1.Text = "chart1";
             // 
             // label29
             // 
@@ -926,6 +886,84 @@
             this.label30.Size = new System.Drawing.Size(615, 10);
             this.label30.TabIndex = 15;
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // bunifuDataViz1
+            // 
+            this.bunifuDataViz1.animationEnabled = true;
+            this.bunifuDataViz1.AutoScroll = true;
+            this.bunifuDataViz1.AxisLineColor = System.Drawing.Color.LightGray;
+            this.bunifuDataViz1.AxisXFontColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisXGridColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisXGridThickness = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.bunifuDataViz1.AxisYFontColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisYGridColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisYGridThickness = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.bunifuDataViz1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuDataViz1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bunifuDataViz1.Font = new System.Drawing.Font("Poppins", 9.25F);
+            this.bunifuDataViz1.Location = new System.Drawing.Point(0, 44);
+            this.bunifuDataViz1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bunifuDataViz1.Name = "bunifuDataViz1";
+            this.bunifuDataViz1.Size = new System.Drawing.Size(615, 305);
+            this.bunifuDataViz1.TabIndex = 19;
+            this.bunifuDataViz1.Theme = Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1;
+            this.bunifuDataViz1.Title = "";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Poppins", 10.25F);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label17.Location = new System.Drawing.Point(549, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(47, 24);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Death";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label17.UseCompatibleTextRendering = true;
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(70)))), ((int)(((byte)(66)))));
+            this.label25.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label25.Location = new System.Drawing.Point(533, 23);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(10, 10);
+            this.label25.TabIndex = 28;
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Poppins", 10.25F);
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label27.Location = new System.Drawing.Point(478, 16);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 24);
+            this.label27.TabIndex = 27;
+            this.label27.Text = "Cases";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label27.UseCompatibleTextRendering = true;
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(158)))), ((int)(((byte)(173)))));
+            this.label28.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label28.Location = new System.Drawing.Point(462, 23);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(10, 10);
+            this.label28.TabIndex = 26;
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ReportsUserControl
             // 
@@ -963,7 +1001,6 @@
             this.panel10.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1029,7 +1066,10 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private Bunifu.DataViz.WinForms.BunifuDataViz bunifuDataViz1;
+        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
     }
 }

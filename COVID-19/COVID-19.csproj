@@ -27,7 +27,7 @@
     <PublisherName>John Kevin Umali</PublisherName>
     <SuiteName>COVID-19 Tracker System</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -69,6 +69,7 @@
     <ApplicationIcon>output-onlinepngtools%284%29%281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu.Core, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9" />
     <Reference Include="Bunifu.UI.WinForm.BunifuShadowPanel">
       <HintPath>..\..\..\..\Downloads\Bunifu-UI-WinForms-1.11.5.1_ShareAppsCrack.com\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForm.BunifuShadowPanel.dll</HintPath>
     </Reference>
@@ -132,6 +133,9 @@
     <Reference Include="Bunifu.UI.WinForms.ToggleSwitch">
       <HintPath>..\..\..\..\Downloads\Bunifu-UI-WinForms-1.11.5.1_ShareAppsCrack.com\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.ToggleSwitch.dll</HintPath>
     </Reference>
+    <Reference Include="BunifuDataViz">
+      <HintPath>..\..\..\..\Downloads\Bunifu-Dataviz-Advanced-1.1.1.5_ShareAppsCrack.com\Bunifu Dataviz Advanced 1.1.1.5\BunifuDataViz.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\Downloads\Bunifu-UI-WinForms-1.11.5.1_ShareAppsCrack.com\Bunifu UI WinForms 1.11.5.1\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
@@ -165,10 +169,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\GETHandler.cs" />
-    <Compile Include="Classes\APIData\CountriesData_v1.cs" />
-    <Compile Include="Classes\APIData\DailyData_v1.cs" />
-    <Compile Include="Classes\APIData\CountryData_v1.cs" />
-    <Compile Include="Classes\APIData\TimelineData_v2.cs" />
+    <Compile Include="API\APIData\CountriesData_v1.cs" />
+    <Compile Include="API\APIData\DailyData_v1.cs" />
+    <Compile Include="API\APIData\CountryData_v1.cs" />
+    <Compile Include="API\APIData\TimelineData_v2.cs" />
     <Compile Include="Classes\AppSingleInstance.cs" />
     <Compile Include="Classes\CalculateRatio.cs" />
     <Compile Include="Classes\DeserializeJSON.cs" />

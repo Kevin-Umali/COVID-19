@@ -1,6 +1,7 @@
 ﻿using COVID_19.API;
 using COVID_19.Classes;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -31,7 +32,6 @@ namespace COVID_19.View
                 Console.WriteLine(ex.Message);
             }
         }
-
         private async Task getHistoricalTimeLine()
         {
             try
@@ -51,13 +51,8 @@ namespace COVID_19.View
                     response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson\daily.json";
                 }
                 //Getting data from json.
-                var timelinedata = deserializeJson.getHistoricalTimeline(response);
+                await CreateStatsGraph(deserializeJson.getHistoricalTimeline(response));
 
-
-                foreach (var item in timelinedata)
-                {
-                    CreateStatsGraph(item.Item1, item.Item2, item.Item3);
-                }
 
                 await Task.CompletedTask;
             }
@@ -66,22 +61,31 @@ namespace COVID_19.View
                 Console.WriteLine(ex.Message);
             }
         }
-
-        private async void CreateStatsGraph(string _date, long cases, long death)
+        private async Task CreateStatsGraph(List<Tuple<string, long, long>> timelinedata)
         {
-            ChartArea CA = chart1.ChartAreas[0];  // quick reference
-            CA.AxisX.ScaleView.Zoomable = true;
-            CA.CursorX.AutoScroll = true;
-            CA.CursorX.IsUserSelectionEnabled = true;
-            CA.AxisX.IsMarginVisible = false;
+            var r = new Random();
 
-            chart1.Series[0].Points.AddXY(_date, cases);
-            chart1.Series[0].ToolTip = "CASES:#VALY at (#VALX)";
-            chart1.Series[1].Points.AddXY(_date, death);
-            chart1.Series[1].ToolTip = "DEATH:#VALY at (#VALX)";
+            var canvas = new Bunifu.DataViz.WinForms.Canvas();
 
+            var datapoint = new Bunifu.DataViz.WinForms.DataPoint(Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_scatter);
+            var datapoint1 = new Bunifu.DataViz.WinForms.DataPoint(Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_scatter);
+
+            foreach(var item in timelinedata)
+            {
+                datapoint.addLabely(item.Item1, item.Item2.ToString());
+                datapoint1.addLabely(item.Item1, item.Item3.ToString());
+            }
+
+            // Add data sets to canvas
+
+            canvas.addData(datapoint);
+            canvas.addData(datapoint1);
+            //render canvas
+
+            bunifuDataViz1.Render(canvas);
 
             await Task.CompletedTask;
+
         }
         private async Task ComputeRatioOfRecoveryAndDeathAsync()
         {
