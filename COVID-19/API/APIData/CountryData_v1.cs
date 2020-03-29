@@ -5,7 +5,7 @@ namespace COVID_19.API.APIData
 {
     class CountryData_v1
     {
-        /* ANOTHER API FROM https://corona.lmao.ninja/all */
+        /* ANOTHER API FROM https://corona.lmao.ninja/countries */
         public string country { get; set; }
         public CountryInfo countryInfo { get; set; }
         public Int64 cases { get; set; }
@@ -16,6 +16,7 @@ namespace COVID_19.API.APIData
         public Int64 active { get; set; }
         public Int64 critical { get; set; }
         public Int64 casesPerOneMillion { get; set; }
+        public Int64 deathsPerOneMillion { get; set; }
 
         public class CountryInfo
         {

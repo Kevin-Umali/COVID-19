@@ -9,6 +9,7 @@ namespace COVID_19.API.APIData
         public Int64 deaths { get; set; }
         public Int64 recovered { get; set; }
         public Int64 updated { get; set; }
+        public Int64 active { get; set; }
 
     }
 }

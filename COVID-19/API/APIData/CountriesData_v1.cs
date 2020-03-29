@@ -16,7 +16,7 @@ namespace COVID_19.API.APIData
         public Int64 active { get; set; }
         public Int64 critical { get; set; }
         public Int64 casesPerOneMillion { get; set; }
-
+        public Int64 deathsPerOneMillion { get; set; }
         public class CountryInfo
         {
             public string _id { get; set; }
