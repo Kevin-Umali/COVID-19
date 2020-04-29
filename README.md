@@ -5,7 +5,7 @@
 <h1 align="center">COVID-19 Desktop Application</h1>
 
 ## Why?
-As soon I saw someone posted web application for this covid-19, I search/research if someone already created an a desktop application for covid-19 tracker since I don't see any app. I decided to create and make it simple. [Download Installer/Setup](https://mega.nz/#!wQxTjYSZ!t7cf_azOPFp8pvegaUBU8XvcKspvlcHYjvLP47Ogcls)
+As soon I saw someone posted web application for this covid-19, I search/research if someone already created an a desktop application for covid-19 tracker since I don't see any app. I decided to create and make it simple. [Fixing Installer/Setup]()
 
 ## Interface
 <p align="center">
