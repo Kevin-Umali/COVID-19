@@ -43,7 +43,7 @@ namespace COVID_19.CustomizeDialog
 
                 DeserializeJSON deserializeJson = new DeserializeJSON();
 
-                apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
+                apiHandler.endPoint = string.Format("https://disease.sh/v2/countries");
                 response = apiHandler.GETRequest();
 
                 //Getting data from json.
@@ -55,13 +55,13 @@ namespace COVID_19.CustomizeDialog
                     foreach (var item in countrynamedata)
                     {
                         SetStatus(Classes.OpenURL.DownloadJson(
-                            string.Format("https://corona.lmao.ninja/countries/{0}",
+                            string.Format("https://disease.sh/v2/countries/{0}",
                             item.ToString()), item.ToString()));
                     }
 
-                    SetStatus(Classes.OpenURL.DownloadJson("https://corona.lmao.ninja/all", "all"));
+                    SetStatus(Classes.OpenURL.DownloadJson("https://disease.sh/v2/all", "all"));
 
-                    SetStatus(Classes.OpenURL.DownloadJson("https://corona.lmao.ninja/countries/", "countries"));
+                    SetStatus(Classes.OpenURL.DownloadJson("https://disease.sh/v2/countries/", "countries"));
 
                     SetStatus(Classes.OpenURL.DownloadJson("https://covid19.mathdro.id/api/daily", "daily"));
 
@@ -92,7 +92,7 @@ namespace COVID_19.CustomizeDialog
 
                 DeserializeJSON deserializeJson = new DeserializeJSON();
 
-                apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
+                apiHandler.endPoint = string.Format("https://disease.sh/v2/countries");
                 response = apiHandler.GETRequest();
 
                 var countrynamedata = deserializeJson.getAllCountryName(response);
@@ -105,7 +105,7 @@ namespace COVID_19.CustomizeDialog
                     bunifuProgressBar1.MaximumValue = 1;
 
                     SetStatus(Classes.OpenURL.DownloadJson(
-                         string.Format("https://corona.lmao.ninja/countries/{0}",
+                         string.Format("https://disease.sh/v2/countries/{0}",
                          ccountry), ccountry));
 
                     lblDescription.Text = "Download Complete.";

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsUserControl));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -89,13 +89,13 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.bunifuDataViz1 = new Bunifu.DataViz.WinForms.BunifuDataViz();
             this.label17 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.bunifuDataViz1 = new Bunifu.DataViz.WinForms.BunifuDataViz();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -249,6 +249,7 @@
             // 
             // label7
             // 
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(177)))), ((int)(((byte)(66)))));
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -294,6 +295,7 @@
             // 
             // label10
             // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(52)))), ((int)(((byte)(94)))));
             this.label10.Dock = System.Windows.Forms.DockStyle.Top;
             this.label10.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -339,6 +341,7 @@
             // 
             // label4
             // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(54)))), ((int)(((byte)(255)))));
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -384,6 +387,7 @@
             // 
             // label12
             // 
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(54)))), ((int)(((byte)(255)))));
             this.label12.Dock = System.Windows.Forms.DockStyle.Top;
             this.label12.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -429,6 +433,7 @@
             // 
             // label15
             // 
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
             this.label15.Dock = System.Windows.Forms.DockStyle.Top;
             this.label15.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -474,6 +479,7 @@
             // 
             // label18
             // 
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(52)))), ((int)(((byte)(94)))));
             this.label18.Dock = System.Windows.Forms.DockStyle.Top;
             this.label18.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -519,6 +525,7 @@
             // 
             // label21
             // 
+            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(52)))), ((int)(((byte)(94)))));
             this.label21.Dock = System.Windows.Forms.DockStyle.Top;
             this.label21.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -775,11 +782,11 @@
             this.bunifuButton2.ColorContrastOnClick = 45;
             this.bunifuButton2.ColorContrastOnHover = 45;
             this.bunifuButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            this.bunifuButton2.CustomizableEdges = borderEdges4;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.bunifuButton2.CustomizableEdges = borderEdges1;
             this.bunifuButton2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.bunifuButton2.DisabledBorderColor = System.Drawing.Color.Empty;
             this.bunifuButton2.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -800,24 +807,24 @@
             this.bunifuButton2.IndicateFocus = true;
             this.bunifuButton2.Location = new System.Drawing.Point(21, 38);
             this.bunifuButton2.Name = "bunifuButton2";
-            stateProperties7.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties7.BorderRadius = 3;
-            stateProperties7.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties7.BorderThickness = 1;
-            stateProperties7.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties7.ForeColor = System.Drawing.Color.White;
-            stateProperties7.IconLeftImage = null;
-            stateProperties7.IconRightImage = null;
-            this.bunifuButton2.onHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties8.BorderRadius = 3;
-            stateProperties8.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties8.BorderThickness = 1;
-            stateProperties8.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties8.ForeColor = System.Drawing.Color.White;
-            stateProperties8.IconLeftImage = null;
-            stateProperties8.IconRightImage = null;
-            this.bunifuButton2.OnPressedState = stateProperties8;
+            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.BorderRadius = 3;
+            stateProperties1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties1.BorderThickness = 1;
+            stateProperties1.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.ForeColor = System.Drawing.Color.White;
+            stateProperties1.IconLeftImage = null;
+            stateProperties1.IconRightImage = null;
+            this.bunifuButton2.onHoverState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties2.BorderRadius = 3;
+            stateProperties2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties2.BorderThickness = 1;
+            stateProperties2.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties2.ForeColor = System.Drawing.Color.White;
+            stateProperties2.IconLeftImage = null;
+            stateProperties2.IconRightImage = null;
+            this.bunifuButton2.OnPressedState = stateProperties2;
             this.bunifuButton2.Size = new System.Drawing.Size(132, 45);
             this.bunifuButton2.TabIndex = 41;
             this.bunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -862,60 +869,6 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(615, 349);
             this.panel13.TabIndex = 19;
-            // 
-            // label29
-            // 
-            this.label29.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label29.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label29.Location = new System.Drawing.Point(0, 10);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(615, 34);
-            this.label29.TabIndex = 14;
-            this.label29.Text = "  World Statistic";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label30
-            // 
-            this.label30.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label30.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
-            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label30.Location = new System.Drawing.Point(0, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(615, 10);
-            this.label30.TabIndex = 15;
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // bunifuDataViz1
-            // 
-            this.bunifuDataViz1.animationEnabled = true;
-            this.bunifuDataViz1.AutoScroll = true;
-            this.bunifuDataViz1.AxisLineColor = System.Drawing.Color.LightGray;
-            this.bunifuDataViz1.AxisXFontColor = System.Drawing.Color.Gray;
-            this.bunifuDataViz1.AxisXGridColor = System.Drawing.Color.Gray;
-            this.bunifuDataViz1.AxisXGridThickness = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.bunifuDataViz1.AxisYFontColor = System.Drawing.Color.Gray;
-            this.bunifuDataViz1.AxisYGridColor = System.Drawing.Color.Gray;
-            this.bunifuDataViz1.AxisYGridThickness = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.bunifuDataViz1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuDataViz1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuDataViz1.Font = new System.Drawing.Font("Poppins", 9.25F);
-            this.bunifuDataViz1.Location = new System.Drawing.Point(0, 44);
-            this.bunifuDataViz1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bunifuDataViz1.Name = "bunifuDataViz1";
-            this.bunifuDataViz1.Size = new System.Drawing.Size(615, 305);
-            this.bunifuDataViz1.TabIndex = 19;
-            this.bunifuDataViz1.Theme = Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1;
-            this.bunifuDataViz1.Title = "";
             // 
             // label17
             // 
@@ -964,6 +917,60 @@
             this.label28.Size = new System.Drawing.Size(10, 10);
             this.label28.TabIndex = 26;
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // bunifuDataViz1
+            // 
+            this.bunifuDataViz1.animationEnabled = true;
+            this.bunifuDataViz1.AutoScroll = true;
+            this.bunifuDataViz1.AxisLineColor = System.Drawing.Color.LightGray;
+            this.bunifuDataViz1.AxisXFontColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisXGridColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisXGridThickness = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.bunifuDataViz1.AxisYFontColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisYGridColor = System.Drawing.Color.Gray;
+            this.bunifuDataViz1.AxisYGridThickness = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.bunifuDataViz1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuDataViz1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bunifuDataViz1.Font = new System.Drawing.Font("Poppins", 9.25F);
+            this.bunifuDataViz1.Location = new System.Drawing.Point(0, 44);
+            this.bunifuDataViz1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bunifuDataViz1.Name = "bunifuDataViz1";
+            this.bunifuDataViz1.Size = new System.Drawing.Size(615, 305);
+            this.bunifuDataViz1.TabIndex = 19;
+            this.bunifuDataViz1.Theme = Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1;
+            this.bunifuDataViz1.Title = "";
+            // 
+            // label29
+            // 
+            this.label29.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label29.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.Location = new System.Drawing.Point(0, 10);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(615, 34);
+            this.label29.TabIndex = 14;
+            this.label29.Text = "  World Statistic";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label30
+            // 
+            this.label30.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label30.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label30.Location = new System.Drawing.Point(0, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(615, 10);
+            this.label30.TabIndex = 15;
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ReportsUserControl
             // 
@@ -1029,7 +1036,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblactive;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label lblcritical;
@@ -1071,5 +1077,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label15;
     }
 }

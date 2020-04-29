@@ -2,6 +2,7 @@
 using COVID_19.Classes;
 using COVID_19.View.Card;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -47,20 +48,23 @@ namespace COVID_19.View
                 if (Properties.Settings.Default.isInternet)
                 {
                     GETHandler apiHandler = new GETHandler();
-                    apiHandler.endPoint = string.Format("https://corona.lmao.ninja/all");
+                    apiHandler.endPoint = string.Format("https://disease.sh/v2/all");
                     response = apiHandler.GETRequest();
                 }
                 else
                 {
                     response = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson\all.json";
                 }
-                //Getting data from json.
+                //Getting data from json. (totalcases, todaycases, deaths, todaydeahts, recovered, active, Updated)
                 var coviddata = deserializeJson.getDailyData(response);
                 //putting the data to the label and long
                 lbltotalcases.Text = string.Format("{0:n0}", coviddata.Item1);
-                lbldeath.Text = string.Format("{0:n0}", coviddata.Item2);
-                lblrecovered.Text = string.Format("{0:n0}", coviddata.Item3);
-                lblupdated.Text = coviddata.Item4;
+                lbltodaycases.Text = string.Format("+{0:n0}", coviddata.Item2);
+                lbldeath.Text = string.Format("{0:n0}", coviddata.Item3);
+                lbltodaydeaths.Text = string.Format("+{0:n0}", coviddata.Item4);
+                lblrecovered.Text = string.Format("{0:n0}", coviddata.Item5);
+                lblactive.Text = string.Format("Active: {0:n0}", coviddata.Item6);
+                lblupdated.Text = coviddata.Item7;
 
                 _totalcases = coviddata.Item1;
                 _death = coviddata.Item2;
@@ -106,8 +110,9 @@ namespace COVID_19.View
         {
             foreach (Control d in flp.Controls)
             {
-                flp.Controls.Clear();
                 d.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
                 GC.Collect();
             }
         }
@@ -123,7 +128,7 @@ namespace COVID_19.View
                 if (Properties.Settings.Default.isInternet)
                 {
                     GETHandler apiHandler = new GETHandler();
-                    apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
+                    apiHandler.endPoint = string.Format("https://disease.sh/v2/countries");
                     response = apiHandler.GETRequest();
                 }
                 else
@@ -137,7 +142,7 @@ namespace COVID_19.View
                 //Getting data from json.
                 var countriesdata = deserializeJson.getCountriesData(response);
                 ////putting the data to the label and long
-                var newcountriesdata = countriesdata.GetRange(0, 3);
+                var newcountriesdata = countriesdata.OrderByDescending(item => item.Item2).ToList().GetRange(0, 3);
                 foreach (var item in countriesdata)
                 {
                     AddCountryCard(item.Item1, item.Item2, item.Item4);
@@ -147,6 +152,9 @@ namespace COVID_19.View
                 {
                     AddTopCountryCard(item.Item1, _totalcases, item.Item2, item.Item3);
                 }
+
+                countriesdata.Clear();
+                newcountriesdata.Clear();
 
                 await Task.CompletedTask;
             }
@@ -185,6 +193,11 @@ namespace COVID_19.View
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
             Classes.OpenURL.OpenUrl("https://covid19responsefund.org/");
+        }
+
+        public void callme()
+        {
+            Console.WriteLine("TESTING");
         }
     }
 }

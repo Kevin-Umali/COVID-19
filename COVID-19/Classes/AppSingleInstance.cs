@@ -50,7 +50,7 @@ namespace COVID_19.Classes
             {
                 if (_hasHandle)
                     _mutex.ReleaseMutex();
-                _mutex.Close();
+                _mutex.Dispose();
             }
         }
     }

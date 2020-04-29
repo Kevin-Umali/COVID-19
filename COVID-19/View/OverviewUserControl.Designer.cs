@@ -44,13 +44,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbltotalcases = new System.Windows.Forms.Label();
+            this.lbltodaycases = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblrecovered = new System.Windows.Forms.Label();
+            this.lblactive = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbldeath = new System.Windows.Forms.Label();
+            this.lbltodaydeaths = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -96,10 +99,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -119,6 +122,7 @@
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(54)))), ((int)(((byte)(255)))));
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -133,6 +137,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.lbltotalcases);
+            this.panel1.Controls.Add(this.lbltodaycases);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(30, 13);
@@ -147,9 +152,21 @@
             this.lbltotalcases.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(54)))), ((int)(((byte)(255)))));
             this.lbltotalcases.Location = new System.Drawing.Point(0, 35);
             this.lbltotalcases.Name = "lbltotalcases";
-            this.lbltotalcases.Size = new System.Drawing.Size(172, 60);
+            this.lbltotalcases.Size = new System.Drawing.Size(172, 36);
             this.lbltotalcases.TabIndex = 4;
             this.lbltotalcases.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbltodaycases
+            // 
+            this.lbltodaycases.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbltodaycases.Font = new System.Drawing.Font("Poppins", 10.25F);
+            this.lbltodaycases.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(54)))), ((int)(((byte)(255)))));
+            this.lbltodaycases.Location = new System.Drawing.Point(0, 71);
+            this.lbltodaycases.Name = "lbltodaycases";
+            this.lbltodaycases.Size = new System.Drawing.Size(172, 24);
+            this.lbltodaycases.TabIndex = 24;
+            this.lbltodaycases.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbltodaycases.UseCompatibleTextRendering = true;
             // 
             // label5
             // 
@@ -166,6 +183,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.lblrecovered);
+            this.panel2.Controls.Add(this.lblactive);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(224, 13);
@@ -180,12 +198,26 @@
             this.lblrecovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(177)))), ((int)(((byte)(66)))));
             this.lblrecovered.Location = new System.Drawing.Point(0, 35);
             this.lblrecovered.Name = "lblrecovered";
-            this.lblrecovered.Size = new System.Drawing.Size(172, 60);
+            this.lblrecovered.Size = new System.Drawing.Size(172, 36);
             this.lblrecovered.TabIndex = 4;
             this.lblrecovered.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblactive
+            // 
+            this.lblactive.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblactive.Font = new System.Drawing.Font("Poppins", 10.25F);
+            this.lblactive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(177)))), ((int)(((byte)(66)))));
+            this.lblactive.Location = new System.Drawing.Point(0, 71);
+            this.lblactive.Name = "lblactive";
+            this.lblactive.Size = new System.Drawing.Size(172, 24);
+            this.lblactive.TabIndex = 25;
+            this.lblactive.Text = "Active:";
+            this.lblactive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblactive.UseCompatibleTextRendering = true;
+            // 
             // label7
             // 
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(177)))), ((int)(((byte)(66)))));
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -211,6 +243,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.lbldeath);
+            this.panel3.Controls.Add(this.lbltodaydeaths);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Location = new System.Drawing.Point(418, 13);
@@ -225,12 +258,25 @@
             this.lbldeath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(52)))), ((int)(((byte)(94)))));
             this.lbldeath.Location = new System.Drawing.Point(0, 35);
             this.lbldeath.Name = "lbldeath";
-            this.lbldeath.Size = new System.Drawing.Size(172, 60);
+            this.lbldeath.Size = new System.Drawing.Size(172, 36);
             this.lbldeath.TabIndex = 4;
             this.lbldeath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lbltodaydeaths
+            // 
+            this.lbltodaydeaths.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbltodaydeaths.Font = new System.Drawing.Font("Poppins", 10.25F);
+            this.lbltodaydeaths.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(52)))), ((int)(((byte)(94)))));
+            this.lbltodaydeaths.Location = new System.Drawing.Point(0, 71);
+            this.lbltodaydeaths.Name = "lbltodaydeaths";
+            this.lbltodaydeaths.Size = new System.Drawing.Size(172, 24);
+            this.lbltodaydeaths.TabIndex = 26;
+            this.lbltodaydeaths.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbltodaydeaths.UseCompatibleTextRendering = true;
+            // 
             // label10
             // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(52)))), ((int)(((byte)(94)))));
             this.label10.Dock = System.Windows.Forms.DockStyle.Top;
             this.label10.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -276,6 +322,7 @@
             // 
             // label13
             // 
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
             this.label13.Dock = System.Windows.Forms.DockStyle.Top;
             this.label13.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -946,38 +993,6 @@
             this.panel10.Size = new System.Drawing.Size(215, 231);
             this.panel10.TabIndex = 15;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 44);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(215, 187);
-            this.flowLayoutPanel1.TabIndex = 8;
-            // 
-            // label21
-            // 
-            this.label21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label21.Font = new System.Drawing.Font("Poppins SemiBold", 13.25F, System.Drawing.FontStyle.Bold);
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label21.Location = new System.Drawing.Point(0, 10);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(215, 34);
-            this.label21.TabIndex = 6;
-            this.label21.Text = "  Update";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label22
-            // 
-            this.label22.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label22.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label22.Location = new System.Drawing.Point(0, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(215, 10);
-            this.label22.TabIndex = 7;
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // bunifuButton1
             // 
             this.bunifuButton1.AllowToggling = false;
@@ -1041,6 +1056,38 @@
             this.bunifuButton1.TextMarginLeft = 0;
             this.bunifuButton1.UseDefaultRadiusAndThickness = true;
             this.bunifuButton1.Click += new System.EventHandler(this.bunifuButton1_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 44);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(215, 187);
+            this.flowLayoutPanel1.TabIndex = 8;
+            // 
+            // label21
+            // 
+            this.label21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label21.Font = new System.Drawing.Font("Poppins SemiBold", 13.25F, System.Drawing.FontStyle.Bold);
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label21.Location = new System.Drawing.Point(0, 10);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(215, 34);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "  Update";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label22
+            // 
+            this.label22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label22.Font = new System.Drawing.Font("Poppins SemiBold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label22.Location = new System.Drawing.Point(0, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(215, 10);
+            this.label22.TabIndex = 7;
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OverviewUserControl
             // 
@@ -1144,5 +1191,8 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton3;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton4;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
+        private System.Windows.Forms.Label lbltodaycases;
+        private System.Windows.Forms.Label lblactive;
+        private System.Windows.Forms.Label lbltodaydeaths;
     }
 }

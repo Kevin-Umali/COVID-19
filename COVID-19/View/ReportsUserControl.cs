@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace COVID_19.View
 {
@@ -17,8 +16,6 @@ namespace COVID_19.View
         {
             InitializeComponent();
         }
-
-
 
         private async void ReportsUserControl_Load(object sender, EventArgs e)
         {
@@ -70,7 +67,7 @@ namespace COVID_19.View
             var datapoint = new Bunifu.DataViz.WinForms.DataPoint(Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_scatter);
             var datapoint1 = new Bunifu.DataViz.WinForms.DataPoint(Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_scatter);
 
-            foreach(var item in timelinedata)
+            foreach (var item in timelinedata)
             {
                 datapoint.addLabely(item.Item1, item.Item2.ToString());
                 datapoint1.addLabely(item.Item1, item.Item3.ToString());
@@ -125,7 +122,7 @@ namespace COVID_19.View
                     GETHandler apiHandler = new GETHandler();
 
                     apiHandler.endPoint = string.Format(
-                        string.Format("https://corona.lmao.ninja/countries/{0}", _countryname));
+                        string.Format("https://disease.sh/v2/countries/{0}", _countryname));
                     response = apiHandler.GETRequest();
                 }
                 else
@@ -177,7 +174,7 @@ namespace COVID_19.View
             {
                 GETHandler apiHandler = new GETHandler();
 
-                apiHandler.endPoint = string.Format("https://corona.lmao.ninja/countries");
+                apiHandler.endPoint = string.Format("https://disease.sh/v2/countries");
                 response = apiHandler.GETRequest();
             }
             else

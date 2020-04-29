@@ -19,7 +19,7 @@ namespace COVID_19
 
         private async void SideUpdateForm_Load(object sender, EventArgs e)
         {
-            await GetDataAsync("https://corona.lmao.ninja/countries");
+            await GetDataAsync("https://disease.sh/v2/countries");
         }
 
         private async Task GetDataAsync(string _url)
@@ -46,9 +46,14 @@ namespace COVID_19
 
                 foreach (var item in covidtogrid)
                 {
-                    bunifuDataGridView1.Rows.Add(Classes.OpenURL.GetImageFromUrl(item.Rest.Item2), item.Item1,
-                        item.Item2, item.Item3, item.Item4, item.Item5, item.Item6,
-                        item.Item7, item.Rest.Item1);
+                    bunifuDataGridView1.Rows.Add(new object[]
+                        {
+                            item.Item1,
+                            item.Item2, item.Item3,
+                            item.Item4, item.Item5,
+                            item.Item6,item.Item7,
+                            item.Rest.Item1
+                        });
                 }
 
                 await Task.CompletedTask;

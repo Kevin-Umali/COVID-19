@@ -19,7 +19,8 @@ namespace COVID_19.View.Card
         {
             lblcountry.Text = _country;
             lblcases.Text = string.Format("{0:n0}", _cases);
-            pictureBox1.LoadAsync(string.Format("{0}", _pictureurl));
+            //Removing picture
+            //pictureBox1.LoadAsync(string.Format("{0}", _pictureurl));
             //pictureBox1.LoadAsync(string.Format("https://www.countryflags.io/{0}/shiny/64.png",ConvertNameToTwoLetterName(_country)));
         }
 

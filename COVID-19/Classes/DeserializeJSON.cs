@@ -8,10 +8,10 @@ namespace COVID_19.Classes
     class DeserializeJSON
     {
         private readonly string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\APIJson";
-        public (Int64, Int64, Int64, string) getDailyData(string _json)
+        public (Int64, Int64, Int64, Int64, Int64, Int64, string) getDailyData(string _json)
         {
-            Int64 w = 0, x = 0, y = 0;
-            string z = string.Empty;
+            Int64 totalcases = 0, todaycases = 0, deaths = 0, todaydeahts = 0, recovered = 0, active = 0;
+            string Updated = string.Empty;
             try
             {
                 JsonSerializerSettings jsonSerializerSetting = new JsonSerializerSettings()
@@ -23,18 +23,24 @@ namespace COVID_19.Classes
                 if (Properties.Settings.Default.isInternet)
                 {
                     var jCOVIDData = JsonConvert.DeserializeObject<API.APIData.DailyData_v1>(_json, jsonSerializerSetting);
-                    w = jCOVIDData.cases;
-                    x = jCOVIDData.deaths;
-                    y = jCOVIDData.recovered;
-                    z = epoch2string(jCOVIDData.updated);
+                    totalcases = jCOVIDData.cases;
+                    todaycases = jCOVIDData.todayCases;
+                    deaths = jCOVIDData.deaths;
+                    todaydeahts = jCOVIDData.todayDeaths;
+                    recovered = jCOVIDData.recovered;
+                    active = jCOVIDData.active;
+                    Updated = epoch2string(jCOVIDData.updated);
                 }
                 else
                 {
                     var jCOVIDData = JsonConvert.DeserializeObject<API.APIData.DailyData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
-                    w = jCOVIDData.cases;
-                    x = jCOVIDData.deaths;
-                    y = jCOVIDData.recovered;
-                    z = epoch2string(jCOVIDData.updated);
+                    totalcases = jCOVIDData.cases;
+                    todaycases = jCOVIDData.todayCases;
+                    deaths = jCOVIDData.deaths;
+                    todaydeahts = jCOVIDData.todayDeaths;
+                    recovered = jCOVIDData.recovered;
+                    active = jCOVIDData.active;
+                    Updated = epoch2string(jCOVIDData.updated);
                 }
             }
             catch (Exception ex)
@@ -42,7 +48,7 @@ namespace COVID_19.Classes
                 Console.WriteLine(ex.Message);
             }
 
-            return (w, x, y, z);
+            return (totalcases, todaycases, deaths, todaydeahts, recovered, active, Updated);
         }
 
         private string epoch2string(Int64 epoch)
@@ -89,9 +95,9 @@ namespace COVID_19.Classes
             return countryandcases;
         }
 
-        public List<Tuple<string, Int64, Int64, Int64, Int64, Int64, Int64, Tuple<Int64, string>>> getDataToGrid(string _json)
+        public List<Tuple<string, Int64, Int64, Int64, Int64, Int64, Int64, Tuple<Int64>>> getDataToGrid(string _json)
         {
-            var datatogrid = new List<Tuple<string, Int64, Int64, Int64, Int64, Int64, Int64, Tuple<Int64, string>>>();
+            var datatogrid = new List<Tuple<string, Int64, Int64, Int64, Int64, Int64, Int64, Tuple<Int64>>>();
             try
             {
                 JsonSerializerSettings jsonSerializerSetting = new JsonSerializerSettings()
@@ -106,9 +112,9 @@ namespace COVID_19.Classes
 
                     foreach (var val in jcountriesData)
                     {
-                        datatogrid.Add(new Tuple<string, long, long, long, long, long, long, Tuple<long, string>>
+                        datatogrid.Add(new Tuple<string, long, long, long, long, long, long, Tuple<long>>
                             (val.country, val.cases, val.todayCases, val.deaths,
-                            val.todayDeaths, val.recovered, val.active, Tuple.Create(val.critical, val.countryInfo.flag)));
+                            val.todayDeaths, val.recovered, val.active, Tuple.Create(val.critical)));
                     }
                 }
                 else
@@ -117,9 +123,9 @@ namespace COVID_19.Classes
 
                     foreach (var val in jcountriesData)
                     {
-                        datatogrid.Add(new Tuple<string, long, long, long, long, long, long, Tuple<long, string>>
+                        datatogrid.Add(new Tuple<string, long, long, long, long, long, long, Tuple<long>>
                             (val.country, val.cases, val.todayCases, val.deaths,
-                            val.todayDeaths, val.recovered, val.active, Tuple.Create(val.critical, val.countryInfo.flag)));
+                            val.todayDeaths, val.recovered, val.active, Tuple.Create(val.critical)));
                     }
                 }
             }
@@ -166,27 +172,41 @@ namespace COVID_19.Classes
                 {
                     if (!File.Exists(@"" + Path.Combine(path, string.Format("{0}.json", _countryname))))
                     {
-                        System.Windows.Forms.DialogResult result = CustomizeDialog.CovidMsgBox.Show("No json.file found. Do you want to download this " +
-                        "'" + _countryname + "' json.file?", "Question");
-
-                        if (result == System.Windows.Forms.DialogResult.Yes)
+                        using (var covidMsgBox = new CustomizeDialog.CovidMsgBox("No json.file found. Do you want to download this " +
+                        "'" + _countryname + "' json.file?", "Question"))
                         {
-                            new CustomizeDialog.DownloadDialog(false, _countryname).ShowDialog();
+                            System.Windows.Forms.DialogResult result = covidMsgBox.ShowDialog();
 
-                            var jdata = JsonConvert.DeserializeObject<API.APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
-                            cases = jdata.cases;
-                            todayCases = jdata.todayCases;
-                            deaths = jdata.deaths;
-                            todayDeaths = jdata.todayDeaths;
-                            recovered = jdata.recovered;
-                            active = jdata.active;
-                            critical = jdata.critical;
-                            flag = jdata.countryInfo.flag;
-                            iso2 = jdata.countryInfo.iso2;
-                            iso3 = jdata.countryInfo.iso3;
+                            if (result == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                using (var downloadDialog = new CustomizeDialog.DownloadDialog(false, _countryname))
+                                {
+                                    downloadDialog.ShowDialog();
+
+                                    if (!downloadDialog.IsDisposed)
+                                    {
+                                        downloadDialog.Dispose();
+                                        GC.Collect();
+                                        GC.WaitForPendingFinalizers();
+                                        GC.Collect();
+                                    }
+                                }
+
+                                var jdata = JsonConvert.DeserializeObject<API.APIData.CountryData_v1>(File.ReadAllText(_json), jsonSerializerSetting);
+                                cases = jdata.cases;
+                                todayCases = jdata.todayCases;
+                                deaths = jdata.deaths;
+                                todayDeaths = jdata.todayDeaths;
+                                recovered = jdata.recovered;
+                                active = jdata.active;
+                                critical = jdata.critical;
+                                flag = jdata.countryInfo.flag;
+                                iso2 = jdata.countryInfo.iso2;
+                                iso3 = jdata.countryInfo.iso3;
+                            }
+                            else if (result == System.Windows.Forms.DialogResult.No)
+                            { }
                         }
-                        else if (result == System.Windows.Forms.DialogResult.No)
-                        { }
                     }
                     else
                     {
